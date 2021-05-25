@@ -1,0 +1,50 @@
+﻿using PF6_Team1_DotNetAssignment.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace PF6_Team1_DotNetAssignment.Options
+{
+    public class PackageOption
+    {
+        public int PackageId { get; set; }
+        public decimal Price { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string Reward { get; set; }
+        public int AmountOfBackers { get; set; }
+
+        public PackageOption() { }
+        public PackageOption(Package package)
+        {
+            if (package != null)
+            {
+                PackageId = package.PackageId;
+                Title = package.Title;
+                Description = package.Description;
+                Price = package.Price;
+                Reward = package.Reward;
+                AmountOfBackers = package.AmountOfBackers;
+
+            }
+        }
+
+        public Package GetPackage()
+        {
+            return new Package
+            {
+                PackageId = PackageId,
+                Title = Title,
+                Description = Description,
+                Price = Price,
+                Reward = Reward,
+                AmountOfBackers = AmountOfBackers
+            };
+        }
+
+
+    }
+}
+
+
