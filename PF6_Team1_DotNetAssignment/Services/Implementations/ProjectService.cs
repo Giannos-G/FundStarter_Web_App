@@ -22,7 +22,7 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
             _context = context;
             _logger = logger;
         }
-        public async Task<Project> CreateProjectAsync(CreateProjectOption options)
+        public async Task<Project> CreateProjectAsync(ProjectOption options)
         {
             // Validation.........................
             if (options == null)
@@ -124,7 +124,7 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
             ProjectToUpdate.CurrentFunds = projectOption.CurrentFunds;
             ProjectToUpdate.CreatedDate = projectOption.CreatedDate;
             ProjectToUpdate.Deadline = projectOption.Deadline;
-            //ProjectToUpdate.AmountOfViews = projectOption.AmountOfViews;
+            ProjectToUpdate.AmountOfViews = projectOption.AmountOfViews;
             // Save and Update Db
             await _context.SaveChangesAsync();
             return ProjectToUpdate;

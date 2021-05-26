@@ -10,11 +10,12 @@ namespace PF6_Team1_DotNetAssignment.Services
     interface IProjectService
     {
         // Create
-        Task<Project> CreateProjectAsync(CreateProjectOption options);
+        Task<Project> CreateProjectAsync(ProjectOption options);
         
         // Read
         Task<List<Project>> GetProjectsAsync();
         Task<Project> GetProjectByIdAsync(int id);
+        //Task<Project> GetProjectByTitleAsync(string title);
 
         //Update
         Task<Project> UpdateProjectById(int id, ProjectOption projectOption);
