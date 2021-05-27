@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PF6_Team1_DotNetAssignment.Services
 {
-    interface IProjectService
+    public interface IProjectService
     {
         // Create
         Task<Project> CreateProjectAsync(ProjectOption options);

@@ -57,7 +57,7 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
             // Create the new project 
             var newProject = new Project
             {
-                Title = options.Title,
+                Title = options.Title,                              // Mapping 
                 Description = options.Description,
                 Category = options.Category,
                 Country = options.Country,
@@ -134,7 +134,7 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
             }
             
             // Update the project
-            ProjectToUpdate.Title = projectOption.Title;
+            ProjectToUpdate.Title = projectOption.Title;                                // Mapping 
             ProjectToUpdate.Description = projectOption.Description;
             ProjectToUpdate.Category = projectOption.Category;
             ProjectToUpdate.Country = projectOption.Country;
