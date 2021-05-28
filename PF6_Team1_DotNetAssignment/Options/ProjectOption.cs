@@ -1,8 +1,6 @@
 ﻿using PF6_Team1_DotNetAssignment.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace PF6_Team1_DotNetAssignment.Options
 {
@@ -20,6 +18,7 @@ namespace PF6_Team1_DotNetAssignment.Options
         public decimal CurrentFunds { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime Deadline { get; set; }
+        public int AmountOfViews { get; set; }          // To be invesigated...........
 
         public ProjectOption() { }
         public ProjectOption(Project project)
