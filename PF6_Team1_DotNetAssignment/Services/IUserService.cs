@@ -12,8 +12,8 @@ namespace Team1_dotNetAssignment.Service
         Task<User> GetUserByIdAsync (int id);
         Task<User> UpdateUserByIdAsync (int id,UserOption userOption);
         Task<int> DeleteUserByIdAsync(int UserId);
-        public List<Project> GetAllMyProjects();
-        public List<Project> GetAllMyBackedProjects();
+        Task<List<Project>> GetAllMyProjectsAsync(UserOption userOption);
+        Task<List<Project>> GetAllMyBackedProjectsAsync(UserOption userOption);
 
         
     }

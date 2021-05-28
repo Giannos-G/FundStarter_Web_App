@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using PF6_Team1_DotNetAssignment.Database;
 using PF6_Team1_DotNetAssignment.Models;
 using PF6_Team1_DotNetAssignment.Options;
@@ -11,6 +12,7 @@ namespace PF6_Team1_DotNetAssignment.Services
     public class UserService : IUserService
     {
         private readonly Team1DbContext _context;
+        private readonly ILogger _logger;
 
         public UserService(Team1DbContext context)
         {
@@ -82,6 +84,32 @@ namespace PF6_Team1_DotNetAssignment.Services
             await _context.SaveChangesAsync();
             return UserToUpdate;
 
+        }
+
+        //Get a list with backed projects!
+        public async Task<List<Project>> GetAllMyBackedProjectsAsync(UserOption userOption)
+        {
+            if (userOption.BackedProjects == null)
+            {
+                _logger.LogError($"The user {userOption.LastName} does not have any backed projects yet!");
+                return null;
+            }
+
+            await _context.Users.SingleOrDefaultAsync(user => user.UserId == userOption.UserId);
+            return userOption.BackedProjects;
+        }
+
+        //Get a list with my created projects!
+        public async Task<List<Project>> GetAllMyProjectsAsync(UserOption userOption)
+        {
+            if (userOption.CreatedProjects == null)
+            {
+                _logger.LogError($"The user {userOption.LastName} does not have any created projects yet!");
+                return null;
+            }
+
+            await _context.Users.SingleOrDefaultAsync(user => user.UserId == userOption.UserId);
+            return userOption.CreatedProjects;
         }
     }
 }
