@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PF6_Team1_DotNetAssignment.Models
+namespace _1234.Models
 {
     public class Package
     {
@@ -16,4 +16,3 @@ namespace PF6_Team1_DotNetAssignment.Models
         public int ProjectId { get; set; }
     }
 }
-

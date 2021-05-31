@@ -14,6 +14,7 @@ namespace PF6_Team1_DotNetAssignment.Options
         public string Description { get; set; }
         public string Reward { get; set; }
         public int AmountOfBackers { get; set; }
+        public int ProjectId { get; set; }
 
         public PackageOption() { }
         public PackageOption(Package package)
