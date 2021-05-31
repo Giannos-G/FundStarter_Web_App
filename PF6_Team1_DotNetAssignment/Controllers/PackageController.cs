@@ -106,5 +106,11 @@ namespace PF6_Team1_DotNetAssignment.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        public async Task<IActionResult> Update(int id, [Bind("Title,Price,Description,Reward")] PackageOption package)                            
+        {
+            await _packageService.UpdatePackageAsync(id, package);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
