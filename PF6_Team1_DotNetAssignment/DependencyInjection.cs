@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PF6_Team1_DotNetAssignment.Database;
@@ -12,13 +12,14 @@ namespace PF6_Team1_DotNetAssignment
         public static IServiceCollection AddCoreServices (this IServiceCollection services)
         {
             services.AddScoped<IProjectService, ProjectService>();
+            services.AddScoped<IUserService, UserService>();
             return services;
         }
 
         public static IServiceCollection AddPersistance (this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<Team1DbContext>(options =>
-               options.UseSqlServer(configuration.GetConnectionString("Default Connection"),
+               options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
                b => b.MigrationsAssembly(typeof(Team1DbContext).Assembly.FullName)));
 
             return services;

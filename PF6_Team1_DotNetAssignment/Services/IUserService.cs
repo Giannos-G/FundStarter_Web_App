@@ -3,7 +3,7 @@ using PF6_Team1_DotNetAssignment.Options;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Team1_dotNetAssignment.Service
+namespace PF6_Team1_DotNetAssignment.Services
 {
     public interface IUserService
     {

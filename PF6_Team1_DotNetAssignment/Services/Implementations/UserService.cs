@@ -5,18 +5,18 @@ using PF6_Team1_DotNetAssignment.Models;
 using PF6_Team1_DotNetAssignment.Options;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Team1_dotNetAssignment.Service;
 
 namespace PF6_Team1_DotNetAssignment.Services
 {
     public class UserService : IUserService
     {
         private readonly Team1DbContext _context;
-        private readonly ILogger _logger;
+        private readonly ILogger<UserService> _logger;
 
-        public UserService(Team1DbContext context)
+        public UserService(Team1DbContext context, ILogger<UserService> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
 

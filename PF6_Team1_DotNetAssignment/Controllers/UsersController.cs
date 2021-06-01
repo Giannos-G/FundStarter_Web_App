@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Team1_dotNetAssignment.Service;
+using PF6_Team1_DotNetAssignment.Services;
 
 namespace PF6_Team1_DotNetAssignment.Controllers
 {
