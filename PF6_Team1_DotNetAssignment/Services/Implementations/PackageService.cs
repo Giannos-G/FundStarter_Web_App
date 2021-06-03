@@ -1,11 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using PF6_Team1_DotNetAssignment.Database;
 using PF6_Team1_DotNetAssignment.Models;
 using PF6_Team1_DotNetAssignment.Options;
 using System.Threading.Tasks;
 
-namespace PF6_Team1_DotNetAssignment.Sevices.Implementatios
+namespace PF6_Team1_DotNetAssignment.Services.Implementations
 {
     class PackageService : IPackageService
     {
@@ -76,6 +76,8 @@ namespace PF6_Team1_DotNetAssignment.Sevices.Implementatios
             var dbPackage = await _context.Packages.FindAsync(packageId);
             if (dbPackage == null) return false;
             _context.Packages.Remove(dbPackage);
+            await _context.SaveChangesAsync();
+
             return true;
         }
 
