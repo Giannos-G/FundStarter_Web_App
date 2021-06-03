@@ -152,7 +152,7 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
         }
 
         //Get the project's current % progress
-        public async Task<decimal> GetCurrentProgressAsync(ProjectOption projectOption)
+        public async Task<float> GetCurrentProgressAsync(ProjectOption projectOption)
         {
             if (projectOption.ProjectId <= 0)
             {
@@ -161,7 +161,7 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
             }
 
             await _context.Projects.SingleOrDefaultAsync(proj => proj.ProjectId == projectOption.ProjectId);
-            return (projectOption.CurrentFunds / projectOption.RequiredFunds) * 100.0m;
+            return (projectOption.CurrentFunds / projectOption.RequiredFunds) * 100;
         }
     }
 }
