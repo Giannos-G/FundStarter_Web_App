@@ -12,8 +12,8 @@ namespace PF6_Team1_DotNetAssignment.Services
         Task<User> GetUserByIdAsync (int id);
         Task<User> UpdateUserByIdAsync (int id,UserOption userOption);
         Task<int> DeleteUserByIdAsync(int UserId);
-        Task<List<Project>> GetAllMyProjectsAsync(UserOption userOption);
-        Task<List<Project>> GetAllMyBackedProjectsAsync(UserOption userOption);
+        Task<List<Project>> GetAllMyProjectsAsync(int? UserId);
+        Task<List<ProjectUserBacker>> GetAllMyBackedProjectsAsync(int? UserId);
 
         
     }

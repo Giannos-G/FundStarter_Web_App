@@ -17,10 +17,11 @@ namespace PF6_Team1_DotNetAssignment.Models
         public float InitialFunds { get; set; }             // decimal
         public DateTime RegistrationDate { get; set; }
         public List<ProjectUserBacker> BackedProjects { get; set; }
+        public List<Project> MyProjects { get; set; }
 
-        private readonly List<Project> AllProjects = new();             //need to be remove????????
+        //private readonly List<Project> AllProjects = new();             //need to be remove????????
 
-        private readonly List<Project> AllBackedProjects = new();
+        //private readonly List<Project> AllBackedProjects = new();
 
 
     }
