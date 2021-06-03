@@ -1,3 +1,5 @@
+ using System;
+
 namespace PF6_Team1_DotNetAssignment.Models
 {
     public class ErrorViewModel
