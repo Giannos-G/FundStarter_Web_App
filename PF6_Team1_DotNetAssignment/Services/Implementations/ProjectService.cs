@@ -125,7 +125,7 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
             return await _context.Projects.ToListAsync(); 
         }
 
-        public async Task<Project> UpdateProjectById(int id, ProjectOption projectOption)
+        public async Task<Project> UpdateProjectByIdAsync(int id, ProjectOption projectOption)
         {
             var ProjectToUpdate = await GetProjectByIdAsync(id);        //Reusability
             if (ProjectToUpdate == null)

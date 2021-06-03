@@ -16,7 +16,7 @@ namespace PF6_Team1_DotNetAssignment.Services
         //Task<Project> GetProjectByTitleAsync(string title);
 
         //Update
-        Task<Project> UpdateProjectById(int id, ProjectOption projectOption);
+        Task<Project> UpdateProjectByIdAsync(int id, ProjectOption projectOption);
         
         //Delete
         Task<int> DeleteProjectByIdAsync(int id);
