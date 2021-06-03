@@ -92,7 +92,7 @@ namespace PF6_Team1_DotNetAssignment.Controllers
             "Category, Country, MyPackages, MyImage, MyVideo, RequiredFunds, CurrentFunds, CreatedDate, Deadline," +
             "AmountOfViews")] ProjectOption project)                                // ?????????????????????????????????
         {
-            await _projectService.UpdateProjectById(id, project);
+            await _projectService.UpdateProjectByIdAsync(id, project);
             return RedirectToAction(nameof(Index));
         }
     }

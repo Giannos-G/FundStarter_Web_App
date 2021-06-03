@@ -2,10 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using PF6_Team1_DotNetAssignment.Models;
 using PF6_Team1_DotNetAssignment.Options;
-using PF6_Team1_DotNetAssignment.Sevices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using PF6_Team1_DotNetAssignment.Services;
 using System.Threading.Tasks;
 
 namespace PF6_Team1_DotNetAssignment.Controllers
