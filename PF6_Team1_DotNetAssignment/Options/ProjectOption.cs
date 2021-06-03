@@ -1,6 +1,8 @@
 ﻿using PF6_Team1_DotNetAssignment.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace PF6_Team1_DotNetAssignment.Options
 {
@@ -11,13 +13,13 @@ namespace PF6_Team1_DotNetAssignment.Options
         public string Description { get; set; }
         public string Category { get; set; }
         public string Country { get; set; }
+        public List<Package> MyPackages { get; set; }
         public string MyImage { get; set; }
         public string MyVideo { get; set; }
-        public float RequiredFunds { get; set; }            //decimal
-        public float CurrentFunds { get; set; }             //decimal
+        public decimal RequiredFunds { get; set; }
+        public decimal CurrentFunds { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime Deadline { get; set; }
-        public int AmountOfViews { get; set; }          // To be invesigated...........
 
         public ProjectOption() { }
         public ProjectOption(Project project)
@@ -35,14 +37,16 @@ namespace PF6_Team1_DotNetAssignment.Options
                 CurrentFunds = project.CurrentFunds;
                 CreatedDate = project.CreatedDate;
                 Deadline = project.Deadline;
+
+
             }
         }
 
-        public Project GetProject()                     //????????????????????????????
+        public Project GetProject()
         {
             return new Project
             {
-               ProjectId = ProjectId,
+                ProjectId = ProjectId,
                 Title = Title,
                 Description = Description,
                 Category = Category,
