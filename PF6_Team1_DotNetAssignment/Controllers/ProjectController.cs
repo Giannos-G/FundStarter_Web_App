@@ -37,8 +37,18 @@ namespace PF6_Team1_DotNetAssignment.Controllers
             return View(project);
         }
         //Create a Project 
-        public async Task<IActionResult> Create ([Bind("ProjectId, Title, Description," +
-            "Category, Country, MyPackages, MyImage, MyVideo, RequiredFunds, CurrentFunds, CreatedDate, Deadline," +
+
+        // GET: Projects/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public async Task<IActionResult> Create([Bind("ProjectId, Title, Description," +
+            "Category, Country, MyImage, MyVideo, RequiredFunds, CurrentFunds, CreatedDate, Deadline," +
             "AmountOfViews")] Project project)
         {
             if (ModelState.IsValid)
@@ -49,7 +59,6 @@ namespace PF6_Team1_DotNetAssignment.Controllers
                     Description = project.Description,
                     Category = project.Category,
                     Country = project.Country,
-                    MyPackages = project.MyPackages,
                     MyImage = project.MyImage,
                     MyVideo = project.MyVideo,
                     RequiredFunds = project.RequiredFunds,
@@ -81,7 +90,7 @@ namespace PF6_Team1_DotNetAssignment.Controllers
             return View(project);
         }
 
-        public async Task<IActionResult> DeleteConfirmed(int id)        /// Why???????????
+        public async Task<IActionResult> DeleteConfirmed(int id)        
         {
             await _projectService.DeleteProjectByIdAsync(id);
             return RedirectToAction(nameof(Index));
@@ -89,8 +98,8 @@ namespace PF6_Team1_DotNetAssignment.Controllers
 
         // Update a Project .............................
         public async Task<IActionResult> Update(int id, [Bind("ProjectId, Title, Description," +
-            "Category, Country, MyPackages, MyImage, MyVideo, RequiredFunds, CurrentFunds, CreatedDate, Deadline," +
-            "AmountOfViews")] ProjectOption project)                                // ?????????????????????????????????
+            "Category, Country, MyImage, MyVideo, RequiredFunds, CurrentFunds, CreatedDate, Deadline," +
+            "AmountOfViews")] ProjectOption project)                             
         {
             await _projectService.UpdateProjectById(id, project);
             return RedirectToAction(nameof(Index));
