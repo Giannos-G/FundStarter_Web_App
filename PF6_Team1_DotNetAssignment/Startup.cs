@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PF6_Team1_DotNetAssignment.Services;
 
 namespace PF6_Team1_DotNetAssignment
 {
@@ -20,6 +21,7 @@ namespace PF6_Team1_DotNetAssignment
         {
             services.AddCoreServices();
             services.AddPersistance(Configuration);
+
             services.AddControllersWithViews();
         }
 
