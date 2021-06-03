@@ -13,8 +13,6 @@ namespace PF6_Team1_DotNetAssignment
         {
             services.AddScoped<IProjectService, ProjectService>();
             services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IPackageService, PackageService>();
-
             return services;
         }
 

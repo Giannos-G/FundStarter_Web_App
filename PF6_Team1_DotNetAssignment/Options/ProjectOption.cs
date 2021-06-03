@@ -11,11 +11,10 @@ namespace PF6_Team1_DotNetAssignment.Options
         public string Description { get; set; }
         public string Category { get; set; }
         public string Country { get; set; }
-        public List<Package> MyPackages { get; set; }
         public string MyImage { get; set; }
         public string MyVideo { get; set; }
-        public decimal RequiredFunds { get; set; }
-        public decimal CurrentFunds { get; set; }
+        public float RequiredFunds { get; set; }            //decimal
+        public float CurrentFunds { get; set; }             //decimal
         public DateTime CreatedDate { get; set; }
         public DateTime Deadline { get; set; }
         public int AmountOfViews { get; set; }          // To be invesigated...........
@@ -36,16 +35,14 @@ namespace PF6_Team1_DotNetAssignment.Options
                 CurrentFunds = project.CurrentFunds;
                 CreatedDate = project.CreatedDate;
                 Deadline = project.Deadline;
-
-
             }
         }
 
-        public Project GetProject()
+        public Project GetProject()                     //????????????????????????????
         {
             return new Project
             {
-                ProjectId = ProjectId,
+               ProjectId = ProjectId,
                 Title = Title,
                 Description = Description,
                 Category = Category,
