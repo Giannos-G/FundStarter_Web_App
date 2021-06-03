@@ -1,13 +1,11 @@
 ﻿using PF6_Team1_DotNetAssignment.Models;
 using PF6_Team1_DotNetAssignment.Options;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace PF6_Team1_DotNetAssignment.Services
 {
-    interface IProjectService
+    public interface IProjectService
     {
         // Create
         Task<Project> CreateProjectAsync(ProjectOption options);
@@ -22,6 +20,8 @@ namespace PF6_Team1_DotNetAssignment.Services
         
         //Delete
         Task<int> DeleteProjectByIdAsync(int id);
+
+        Task<float> GetCurrentProgressAsync(ProjectOption projectOption);
 
     }
 }

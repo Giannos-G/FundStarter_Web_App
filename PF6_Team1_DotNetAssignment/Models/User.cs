@@ -1,7 +1,6 @@
-﻿using System;
+﻿using PF6_Team1_DotNetAssignment.Models;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace PF6_Team1_DotNetAssignment.Models
 {
@@ -15,14 +14,14 @@ namespace PF6_Team1_DotNetAssignment.Models
         public string Username { get; set; }
         public int Age { get; set; }
         public string Gender { get; set; }
-        public decimal InitialFunds { get; set; }
+        public float InitialFunds { get; set; }             // decimal
         public DateTime RegistrationDate { get; set; }
-        public List<Project> CreatedProjects { get; set; }
-        public List<Project> BackedProjects { get; set; }
+        public List<ProjectUserBacker> BackedProjects { get; set; }
+        public List<Project> MyProjects { get; set; }
 
-        private readonly List<Project> AllProjects = new();
+        //private readonly List<Project> AllProjects = new();             //need to be remove????????
 
-        private readonly List<Project> AllBackedProjects = new();
+        //private readonly List<Project> AllBackedProjects = new();
 
 
     }

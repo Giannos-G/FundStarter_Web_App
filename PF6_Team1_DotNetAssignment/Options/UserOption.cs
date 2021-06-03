@@ -1,8 +1,5 @@
 ﻿using PF6_Team1_DotNetAssignment.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace PF6_Team1_DotNetAssignment.Options
 {
@@ -15,8 +12,6 @@ namespace PF6_Team1_DotNetAssignment.Options
         public string Username { get; set; }
         public string Password { get; set; }
         public DateTime RegistrationDate { get; set; }
-        public List<Project> CreatedProjects { get; set; }
-        public List<Project> BackedProjects { get; set; }
 
         public User GetUser()
         {
@@ -43,7 +38,6 @@ namespace PF6_Team1_DotNetAssignment.Options
                 Username = user.Username;
                 Password = user.Password;
                 RegistrationDate = user.RegistrationDate;
-
             }
         }
     }
