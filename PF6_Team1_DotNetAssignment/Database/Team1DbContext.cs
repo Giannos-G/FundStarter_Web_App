@@ -13,8 +13,6 @@ namespace PF6_Team1_DotNetAssignment.Database
         public DbSet<Package> Packages { get; set; }
         public DbSet<Project> Projects { get; set; }
 
-        public DbSet<ProjectUserBacker> ProjectUserBackers { get; set; }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=PF6_Team1;User Id=sa;Password=admin!@#123");
