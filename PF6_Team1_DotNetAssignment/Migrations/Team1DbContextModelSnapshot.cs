@@ -35,7 +35,7 @@ namespace PF6_Team1_DotNetAssignment.Migrations
                     b.Property<float>("Price")
                         .HasColumnType("real");
 
-                    b.Property<int?>("ProjectId")
+                    b.Property<int>("ProjectId")
                         .HasColumnType("int");
 
                     b.Property<string>("Reward")
@@ -91,7 +91,12 @@ namespace PF6_Team1_DotNetAssignment.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("ProjectId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Projects");
                 });
@@ -154,7 +159,16 @@ namespace PF6_Team1_DotNetAssignment.Migrations
                 {
                     b.HasOne("PF6_Team1_DotNetAssignment.Models.Project", null)
                         .WithMany("MyPackages")
-                        .HasForeignKey("ProjectId");
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("PF6_Team1_DotNetAssignment.Models.Project", b =>
+                {
+                    b.HasOne("PF6_Team1_DotNetAssignment.Models.User", null)
+                        .WithMany("MyProjects")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("PF6_Team1_DotNetAssignment.Models.ProjectUserBacker", b =>
@@ -186,6 +200,8 @@ namespace PF6_Team1_DotNetAssignment.Migrations
             modelBuilder.Entity("PF6_Team1_DotNetAssignment.Models.User", b =>
                 {
                     b.Navigation("BackedProjects");
+
+                    b.Navigation("MyProjects");
                 });
 #pragma warning restore 612, 618
         }

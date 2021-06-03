@@ -80,7 +80,7 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
         public async Task<int> DeleteProjectByIdAsync(int id)           // ??????????????????
         {
             //Validation..................
-            if (id <= 0)
+            if (id < 0)
             {
                 _logger.LogError("Id invalid! Id cannot be equal or less than zero");
                 return -1;
@@ -102,7 +102,7 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
         public async Task<Project> GetProjectByIdAsync(int id)
         {
             //Validation..................
-            if (id <= 0)
+            if (id < 0)
             {
                 _logger.LogError("Id invalid! Id cannot be equal or less than zero");
                 return null;
@@ -112,7 +112,7 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
 
             if (ProjectToBeRead == null)
             {
-                _logger.LogError("Project does not exist");
+                _logger.LogError($"Project with id {id} does not exist");
                 return null;
             }
 
@@ -154,7 +154,7 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
         //Get the project's current % progress
         public async Task<float> GetCurrentProgressAsync(ProjectOption projectOption)
         {
-            if (projectOption.ProjectId <= 0)
+            if (projectOption.ProjectId < 0)
             {
                 _logger.LogError($"The project '{projectOption.Title}' does not exist!");
                 return default;

@@ -97,9 +97,18 @@ namespace PF6_Team1_DotNetAssignment.Controllers
         }
 
         // Update a Project .............................
+
+
+        public IActionResult Edit()
+        {
+            return View();
+        }
+
+        [HttpPost, ActionName("Update")]
+        [ValidateAntiForgeryToken]
+
         public async Task<IActionResult> Update(int id, [Bind("ProjectId, Title, Description," +
-            "Category, Country, MyImage, MyVideo, RequiredFunds, CurrentFunds, CreatedDate, Deadline," +
-            "AmountOfViews")] ProjectOption project)                             
+            "Category, Country, MyImage, MyVideo, RequiredFunds, Deadline")] ProjectOption project)                             
         {
             await _projectService.UpdateProjectById(id, project);
             return RedirectToAction(nameof(Index));

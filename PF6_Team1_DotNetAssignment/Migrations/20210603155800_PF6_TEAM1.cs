@@ -3,33 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PF6_Team1_DotNetAssignment.Migrations
 {
-    public partial class PF6_Team1 : Migration
+    public partial class PF6_TEAM1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "Projects",
-                columns: table => new
-                {
-                    ProjectId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Category = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    MyImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    MyVideo = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    RequiredFunds = table.Column<float>(type: "real", nullable: false),
-                    CurrentFunds = table.Column<float>(type: "real", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Deadline = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    AmountOfViews = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Projects", x => x.ProjectId);
-                });
-
             migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
@@ -52,6 +29,36 @@ namespace PF6_Team1_DotNetAssignment.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Projects",
+                columns: table => new
+                {
+                    ProjectId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Category = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MyImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MyVideo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RequiredFunds = table.Column<float>(type: "real", nullable: false),
+                    CurrentFunds = table.Column<float>(type: "real", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Deadline = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    AmountOfViews = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Projects", x => x.ProjectId);
+                    table.ForeignKey(
+                        name: "FK_Projects_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Packages",
                 columns: table => new
                 {
@@ -62,7 +69,7 @@ namespace PF6_Team1_DotNetAssignment.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Reward = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AmountOfBackers = table.Column<int>(type: "int", nullable: false),
-                    ProjectId = table.Column<int>(type: "int", nullable: true)
+                    ProjectId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -72,7 +79,7 @@ namespace PF6_Team1_DotNetAssignment.Migrations
                         column: x => x.ProjectId,
                         principalTable: "Projects",
                         principalColumn: "ProjectId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -103,6 +110,11 @@ namespace PF6_Team1_DotNetAssignment.Migrations
                 name: "IX_Packages_ProjectId",
                 table: "Packages",
                 column: "ProjectId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Projects_UserId",
+                table: "Projects",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProjectUserBackers_UserId",
