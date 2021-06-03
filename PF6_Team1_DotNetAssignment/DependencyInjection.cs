@@ -12,7 +12,6 @@ namespace PF6_Team1_DotNetAssignment
         public static IServiceCollection AddCoreServices (this IServiceCollection services)
         {
             services.AddScoped<IProjectService, ProjectService>();
-            services.AddScoped<IUserService, UserService>();
             return services;
         }
 

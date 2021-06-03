@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using PF6_Team1_DotNetAssignment.Database;
 using PF6_Team1_DotNetAssignment.Models;
 using PF6_Team1_DotNetAssignment.Options;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -148,19 +149,6 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
             // Save and Update Db
             await _context.SaveChangesAsync();
             return ProjectToUpdate;
-        }
-
-        //Get the project's current % progress
-        public async Task<decimal> GetCurrentProgressAsync(ProjectOption projectOption)
-        {
-            if (projectOption.ProjectId <= 0)
-            {
-                _logger.LogError($"The project '{projectOption.Title}' does not exist!");
-                return default;
-            }
-
-            await _context.Projects.SingleOrDefaultAsync(proj => proj.ProjectId == projectOption.ProjectId);
-            return (projectOption.CurrentFunds / projectOption.RequiredFunds) * 100.0m;
         }
     }
 }

@@ -21,7 +21,5 @@ namespace PF6_Team1_DotNetAssignment.Services
         //Delete
         Task<int> DeleteProjectByIdAsync(int id);
 
-        Task<decimal> GetCurrentProgressAsync(ProjectOption projectOption);
-
     }
 }
