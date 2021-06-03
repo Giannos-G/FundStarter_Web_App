@@ -18,7 +18,7 @@ namespace PF6_Team1_DotNetAssignment
         public static IServiceCollection AddPersistance (this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<Team1DbContext>(options =>
-               options.UseSqlServer(configuration.GetConnectionString("Default Connection"),
+               options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
                b => b.MigrationsAssembly(typeof(Team1DbContext).Assembly.FullName)));
 
             return services;

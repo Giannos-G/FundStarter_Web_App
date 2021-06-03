@@ -5,7 +5,6 @@ using PF6_Team1_DotNetAssignment.Models;
 using PF6_Team1_DotNetAssignment.Options;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace PF6_Team1_DotNetAssignment.Services.Implementations
@@ -35,7 +34,7 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
                 _logger.LogError("Please specify a Title");
                 return null;
             }
-            if (options.RequiredFunds == 0)
+            if (options.RequiredFunds <= 0)
             {
                 _logger.LogError("Please specify the required funds for your project");
                 return null;
@@ -61,14 +60,15 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
                 Description = options.Description,
                 Category = options.Category,
                 Country = options.Country,
-                MyPackages = options.MyPackages,
                 MyImage = options.MyImage,
                 MyVideo = options.MyVideo,
                 RequiredFunds = options.RequiredFunds,
-                CurrentFunds = options.CurrentFunds,
-                CreatedDate = options.CreatedDate,
+                //CurrentFunds = options.CurrentFunds,
+                CurrentFunds = 0, 
+                CreatedDate = DateTime.Now,                         // ????????  
                 Deadline = options.Deadline,
-                AmountOfViews = options.AmountOfViews
+                //AmountOfViews = options.AmountOfViews
+                AmountOfViews = 0
             };
 
             // Save and Update Db
@@ -77,7 +77,7 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
             return newProject;
         }
 
-        public async Task<int> DeleteProjectByIdAsync(int id)
+        public async Task<int> DeleteProjectByIdAsync(int id)           // ??????????????????
         {
             //Validation..................
             if (id <= 0)
@@ -138,7 +138,6 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
             ProjectToUpdate.Description = projectOption.Description;
             ProjectToUpdate.Category = projectOption.Category;
             ProjectToUpdate.Country = projectOption.Country;
-            ProjectToUpdate.MyPackages = projectOption.MyPackages;
             ProjectToUpdate.MyImage = projectOption.MyImage;
             ProjectToUpdate.MyVideo = projectOption.MyVideo;
             ProjectToUpdate.RequiredFunds = projectOption.RequiredFunds;
