@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using PF6_Team1_DotNetAssignment.Database;
 using PF6_Team1_DotNetAssignment.Models;
