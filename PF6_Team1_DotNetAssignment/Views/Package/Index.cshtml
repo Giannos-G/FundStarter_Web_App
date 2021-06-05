@@ -1,0 +1,116 @@
+﻿@model IEnumerable<PF6_Team1_DotNetAssignment.Models.Package>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Packages</h1>
+
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reward)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AmountOfBackers)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="packages">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reward)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AmountOfBackers)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.PackageId">Details</a> |
+                    <!--  <a asp-action="Delete" asp-route-id="@item.ProjectId"> Delete </a> -->
+                    <a href="javascript:void(0)" onclick="deleteProject(@item.PackageId)">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts
+{
+    <script>
+        const uri = 'Package';
+
+        function getPackage() {
+            fetch(`${uri}/Get`)
+                .then(response => response.json())
+                .then(data => _displayPackage(data))
+                .catch(error => console.error('Unable to get packages.', error));
+        }
+        function deletePackage(id) {
+            fetch(`${uri}/Delete/${id}`, {
+                method: 'DELETE'
+            })
+                .then(() => getPackage())
+                .catch(error => console.error('Unable to delete packages.', error));
+        }
+        function _displayPackage(data) {
+            const tBody = document.getElementById('packages');
+            tBody.innerHTML = '';
+            const anchorElement = document.createElement('a');
+            data.forEach(item => {
+                let detailsAnchor = anchorElement.cloneNode(false);
+                detailsAnchor.innerText = 'Details';
+                detailsAnchor.setAttribute('href', `${uri}/Details/${item.id}`);
+                let deleteAnchor = anchorElement.cloneNode(false);
+                deleteAnchor.innerText = 'Delete';
+                deleteAnchor.setAttribute('onclick', `deletePackage(${item.id})`);
+                deleteAnchor.setAttribute('href', 'javascript:void(0)');
+                let tr = tBody.insertRow();
+                let td1 = tr.insertCell(0);
+                let TitleNode = document.createTextNode(item.title);
+                td1.appendChild(TitleNode);
+                let td2 = tr.insertCell(1);
+                let DescriptionNode = document.createTextNode(item.description);
+                td2.appendChild(DescriptionNode);
+                let td3 = tr.insertCell(2);
+                let CategoryNode = document.createTextNode(item.price);
+                td3.appendChild(CategoryNode);
+                let td4 = tr.insertCell(3);
+                let CountryNode = document.createTextNode(item.reward);
+                td4.appendChild(CountryNode);
+                let td5 = tr.insertCell(4);
+                let MyImageNode = document.createTextNode(item.amountofbackers);
+                td5.appendChild(MyImageNode);
+                td6.appendChild(detailsAnchor);
+                let td7 = tr.insertCell(6);
+                td7.appendChild(deleteAnchor);
+            });
+        }
+    </script>
+}

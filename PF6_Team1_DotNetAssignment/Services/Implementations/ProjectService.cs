@@ -166,5 +166,28 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
             await _context.Projects.SingleOrDefaultAsync(proj => proj.ProjectId == projectOption.ProjectId);
             return (projectOption.CurrentFunds / projectOption.RequiredFunds) * 100;
         }
+
+        public async Task<List<PackageOption>> GetPackagesByIdAsync(int id)
+        {
+            var project = await GetProjectByIdAsync(id);
+
+            var new_package_list = new List<PackageOption>();
+
+            foreach (var Package in project.MyPackages)
+            {
+                new_package_list.Add(new PackageOption
+                {
+                    PackageId = Package.PackageId,
+                    Title = Package.Title,
+                    Price = Package.Price,
+                    Description = Package.Description,
+                    Reward = Package.Reward,
+                    AmountOfBackers = Package.AmountOfBackers,
+                    ProjectId = Package.ProjectId
+                });
+            }
+            return new_package_list;
+
+        }
     }
 }

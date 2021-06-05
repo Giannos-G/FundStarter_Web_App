@@ -2,10 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using PF6_Team1_DotNetAssignment.Models;
 using PF6_Team1_DotNetAssignment.Options;
-using PF6_Team1_DotNetAssignment.Sevices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using PF6_Team1_DotNetAssignment.Services;
 using System.Threading.Tasks;
 
 namespace PF6_Team1_DotNetAssignment.Controllers
@@ -14,6 +11,7 @@ namespace PF6_Team1_DotNetAssignment.Controllers
     {
 
         private readonly IPackageService _packageService;
+        private readonly IProjectService _projectService;
 
         public PackageController(IPackageService packageService)
         {
@@ -22,11 +20,10 @@ namespace PF6_Team1_DotNetAssignment.Controllers
 
 
         // GET: PackageController
-        public async Task<IActionResult> Index(int id)
+        public async Task<IActionResult> Index(int projectId)      //paei stin details tou project 
         {
-            var allPackagesResult = await _packageService.GetPackageByIdAsync(id);
-
-            return View(allPackagesResult);
+            var project = await _projectService.GetProjectByIdAsync(projectId);
+            return View(project);
         }
 
         // GET: PackageController/Details/5
@@ -43,8 +40,10 @@ namespace PF6_Team1_DotNetAssignment.Controllers
         }
 
         // GET: PackageController/Create
-        public ActionResult Create()
+       [HttpGet("Create/{id}")]
+        public ActionResult Create(int id)
         {
+            TempData["id"] = id;
             return View();
         }
 
@@ -62,6 +61,7 @@ namespace PF6_Team1_DotNetAssignment.Controllers
                     Description = package.Description,
                     Reward = package.Reward,
                     AmountOfBackers = package.AmountOfBackers
+                    //ProjectId = package.ProjectId
                 });
 
                 return RedirectToAction(nameof(Index));

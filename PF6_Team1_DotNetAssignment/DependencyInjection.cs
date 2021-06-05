@@ -1,4 +1,4 @@
-﻿ using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PF6_Team1_DotNetAssignment.Database;
@@ -13,6 +13,7 @@ namespace PF6_Team1_DotNetAssignment
         {
             services.AddScoped<IProjectService, ProjectService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IPackageService, PackageService>();
             return services;
         }
 

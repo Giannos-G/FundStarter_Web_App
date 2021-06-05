@@ -3,9 +3,10 @@ using Microsoft.Extensions.Logging;
 using PF6_Team1_DotNetAssignment.Database;
 using PF6_Team1_DotNetAssignment.Models;
 using PF6_Team1_DotNetAssignment.Options;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace PF6_Team1_DotNetAssignment.Sevices.Implementatios
+namespace PF6_Team1_DotNetAssignment.Services.Implementations
 {
     class PackageService : IPackageService
     {
@@ -37,23 +38,37 @@ namespace PF6_Team1_DotNetAssignment.Sevices.Implementatios
 
         public async Task<PackageOption> GetPackageAsync(int packageId, int projectId)
         {
-            
-          var package =  await _context.Packages.SingleOrDefaultAsync(proj => proj.ProjectId == projectId); /////?????????
 
-          return new PackageOption(package);
+            var package = await _context.Packages.SingleOrDefaultAsync(proj => proj.ProjectId == projectId); /////?????????
 
-        }
-
-        public async Task<PackageOption> GetPackageByIdAsync(int packageId)
-        {
-            var package = await _context.Packages.FindAsync(packageId);
-            if (package == null)
-            {
-                return null;
-            }
             return new PackageOption(package);
+
         }
 
+        //public async Task<List<PackageOption>> GetPackageByProjectIdAsync(int projectId)
+        //{
+        //    var project = await _context.Projects.FindAsync(projectId);
+        //    if (project == null)
+        //    {
+        //        return null;
+        //    }
+
+        //    var new_package_list = new List<PackageOption>();
+        //    foreach (var Package in project.MyPackages)
+        //    {
+        //        new_package_list.Add(new PackageOption
+        //        {
+        //            PackageId = Package.PackageId,
+        //            Title = Package.Title,
+        //            Price = Package.Price,
+        //            Description = Package.Description,
+        //            Reward = Package.Reward,
+        //            AmountOfBackers = Package.AmountOfBackers,
+        //            ProjectId = Package.ProjectId
+        //        });
+        //    }
+        //    return new_package_list;
+        //}
 
         public async Task<PackageOption> UpdatePackageAsync(int packageId, PackageOption packageOption)
         {

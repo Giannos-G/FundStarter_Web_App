@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace PF6_Team1_DotNetAssignment.Models
+﻿namespace PF6_Team1_DotNetAssignment.Models
 {
     public class Package
     {

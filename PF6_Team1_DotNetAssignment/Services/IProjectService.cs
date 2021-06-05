@@ -23,5 +23,8 @@ namespace PF6_Team1_DotNetAssignment.Services
 
         Task<float> GetCurrentProgressAsync(ProjectOption projectOption);
 
+        Task<List<PackageOption>> GetPackagesByIdAsync(int id);
+
+
     }
 }
