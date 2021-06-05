@@ -1,4 +1,4 @@
-﻿@model PF6_Team1_DotNetAssignment.Models.Project
+﻿@model PF6_Team1_DotNetAssignment.Options.ProjectOption
 
 @{
     ViewData["Title"] = "Update";
@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Update">
+        <form asp-action="Edit" >
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ProjectId" />
             <div class="form-group">
@@ -74,17 +74,20 @@
             </div>
                 -->
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-danger" />
+                <input type="submit" value="Save" class="btn btn-danger" /> |
             </div>
-               
         </form>
     </div>
-
 </div>
 
+
+@*<div>
+    <a asp-action="Update" asp-route-id="@Model.ProjectId">Save</a>
+</div>*@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -110,11 +110,14 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
             //Find the project
             var ProjectToBeRead = await _context.Projects.SingleOrDefaultAsync(p => p.ProjectId == id);
 
-            if (ProjectToBeRead == null)
-            {
-                _logger.LogError($"Project with id {id} does not exist");
-                return null;
-            }
+            //if (ProjectToBeRead == null)
+            //{
+            //    _logger.LogError($"Project with id {id} does not exist");
+            //    return null;
+            //}
+
+            //await _context.Projects.AddAsync(ProjectToBeRead);
+            //await _context.SaveChangesAsync();
 
             return ProjectToBeRead;
 

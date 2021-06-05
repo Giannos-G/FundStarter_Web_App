@@ -73,7 +73,8 @@ namespace PF6_Team1_DotNetAssignment.Controllers
             return View(project);
         }
         //Delete a Project 
-        public async Task<IActionResult> Delete (int? id)
+
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -89,6 +90,8 @@ namespace PF6_Team1_DotNetAssignment.Controllers
 
             return View(project);
         }
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
 
         public async Task<IActionResult> DeleteConfirmed(int id)        
         {
@@ -99,18 +102,30 @@ namespace PF6_Team1_DotNetAssignment.Controllers
         // Update a Project .............................
 
 
-        public IActionResult Edit()
+        public async Task <IActionResult> Edit(int id)
         {
-            return View();
+            var project = await _projectService.GetProjectByIdAsync(id);
+            //Validationsss.....
+            return View(new ProjectOption { // Mapping.........
+             ProjectId = project.ProjectId,
+            Title = project.Title,
+            Description = project.Description,
+            Category = project.Category,
+            Country = project.Country,
+            MyImage = project.MyImage,
+            MyVideo= project.MyVideo,
+            RequiredFunds = project.RequiredFunds,
+            Deadline = project.Deadline
+            });           
         }
 
-        [HttpPost, ActionName("Update")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public async Task<IActionResult> Update(int id, [Bind("ProjectId, Title, Description," +
+        public async Task<IActionResult> Edit(int projectId, [Bind("ProjectId, Title, Description," +
             "Category, Country, MyImage, MyVideo, RequiredFunds, Deadline")] ProjectOption project)                             
         {
-            await _projectService.UpdateProjectById(id, project);
+            await _projectService.UpdateProjectById(projectId, project);
             return RedirectToAction(nameof(Index));
         }
     }

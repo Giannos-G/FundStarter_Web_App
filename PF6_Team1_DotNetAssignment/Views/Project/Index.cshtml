@@ -90,7 +90,8 @@
 
             <td>
                 <a asp-action="Details" asp-route-id="@item.ProjectId">Details</a> |
-                <a href="javascript:void(0)" onclick="deleteProject(@item.ProjectId)">Delete</a>
+                <a asp-action="Delete" asp-route-id="@item.ProjectId"> Delete </a>
+                <!-- <a href="javascript:void(0)" onclick="deleteProject(@item.ProjectId)">Delete</a>-->
             </td>
         </tr>
         }
