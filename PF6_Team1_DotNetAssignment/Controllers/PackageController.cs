@@ -48,9 +48,9 @@ namespace PF6_Team1_DotNetAssignment.Controllers
         }
 
         // POST: PackageController/Create
-        [HttpPost]
+        [HttpPost("Create/{id}")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Title,Price,Description,Reward")] Package package)
+        public async Task<IActionResult> Create(int id, [Bind("PackageId,Title,Price,Description,Reward,AmountOfBackers")] Package package)
         {
             if (ModelState.IsValid)
             {
@@ -60,13 +60,12 @@ namespace PF6_Team1_DotNetAssignment.Controllers
                     Price = package.Price,
                     Description = package.Description,
                     Reward = package.Reward,
-                    AmountOfBackers = package.AmountOfBackers
-                    //ProjectId = package.ProjectId
+                    AmountOfBackers = package.AmountOfBackers,
+                    ProjectId = id
                 });
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", "Project", new { @id = id });
             }
-
             return View(package);
         }
 

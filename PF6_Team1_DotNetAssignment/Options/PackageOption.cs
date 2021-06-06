@@ -36,7 +36,8 @@ namespace PF6_Team1_DotNetAssignment.Options
                 Description = Description,
                 Price = Price,
                 Reward = Reward,
-                AmountOfBackers = AmountOfBackers
+                AmountOfBackers = AmountOfBackers,
+                ProjectId = ProjectId
             };
         }
 
