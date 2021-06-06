@@ -2,6 +2,7 @@
 using PF6_Team1_DotNetAssignment.Models;
 using PF6_Team1_DotNetAssignment.Options;
 using PF6_Team1_DotNetAssignment.Services;
+using System;
 using System.Threading.Tasks;
 
 namespace PF6_Team1_DotNetAssignment.Controllers
@@ -27,6 +28,9 @@ namespace PF6_Team1_DotNetAssignment.Controllers
             {
                 return NotFound();
             }
+
+            var append_to_projects = await _projectService.AppendPackageToProjectAsync(id.Value);
+
             var project = await _projectService.GetProjectByIdAsync(id.Value);
 
             if (project == null)

@@ -5,6 +5,8 @@ using PF6_Team1_DotNetAssignment.Models;
 using PF6_Team1_DotNetAssignment.Options;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace PF6_Team1_DotNetAssignment.Services.Implementations
@@ -167,6 +169,10 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
             return (projectOption.CurrentFunds / projectOption.RequiredFunds) * 100;
         }
 
+
+
+
+
         public async Task<List<PackageOption>> GetPackagesByIdAsync(int id)
         {
             var project = await GetProjectByIdAsync(id);
@@ -188,6 +194,30 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
             }
             return new_package_list;
 
+        }
+
+        public async Task<bool> AppendPackageToProjectAsync(int id)
+        {
+            if (id < 0)
+            {
+                _logger.LogError("Id is invalid");
+                return false;
+            }
+
+            var project = await GetProjectByIdAsync(id);
+
+            var package_list = await _context.Packages.Where(pack => pack.ProjectId == id).ToListAsync();
+            if (package_list == null)
+            {
+                _logger.LogError("List is empty or Project has no Packages");
+                return false;
+            }
+
+            foreach (var package in package_list){
+                project.MyPackages.Add(package);
+                //Debug.WriteLine(package.Title);
+            }
+            return true;
         }
     }
 }

@@ -13,9 +13,10 @@ namespace PF6_Team1_DotNetAssignment.Controllers
         private readonly IPackageService _packageService;
         private readonly IProjectService _projectService;
 
-        public PackageController(IPackageService packageService)
+        public PackageController(IPackageService packageService, IProjectService projectService)
         {
             _packageService = packageService;
+            _projectService = projectService;
         }
 
 
