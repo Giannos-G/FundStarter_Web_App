@@ -40,6 +40,17 @@ namespace PF6_Team1_DotNetAssignment.Controllers
 
             return View(project);
         }
+
+
+        public async Task<IActionResult> Index_All()
+        {
+            return View(await _projectService.GetProjectsAsync());
+        }
+
+
+
+
+
         //Create a Project 
 
         // GET: Projects/Create

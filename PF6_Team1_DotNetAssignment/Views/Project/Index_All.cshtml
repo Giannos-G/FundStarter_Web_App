@@ -1,0 +1,47 @@
+﻿@model IEnumerable<PF6_Team1_DotNetAssignment.Models.Project>
+       
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <main style="margin-top: 8%;">
+        @foreach (var item in Model)
+        {
+
+
+
+            <!-- Start: 1 Row 1 Column -->
+
+            <!-- End: 1 Row 1 Column -->
+            <!-- Start: 1 Row 2 Columns -->
+            <div>
+                <div class="container" style="border-style:solid">
+                    <h2 class="text-center"> @Html.DisplayFor(modelItem => item.Title)</h2>
+                    <div class="row">
+                        <div class="col-md-6 col-lg-9">
+                            <img src="~/img/01.jpg" width="600" height="500">
+                            <h2>  @Html.DisplayFor(modelItem => item.MyPackages) </h2>
+                        </div>
+
+                        <div class="col-md-6 col-lg-3 offset-lg-0 align-self-center" style="background-color:grey">
+                            <h2>Packages</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End: 1 Row 2 Columns -->
+
+        }
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
