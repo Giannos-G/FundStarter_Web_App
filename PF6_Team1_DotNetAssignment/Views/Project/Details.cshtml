@@ -40,13 +40,17 @@
             @Html.DisplayNameFor(model => model.MyPackages)
         </dt>
 
+
+
         @if (Model.MyPackages != null)
-         {
+        {
             @foreach (var item in Model.MyPackages)
             {
                 <dd class="col-sm-10">
                     @Html.DisplayFor(modelItem => item.Title)
                 </dd>
+               
+                <a asp-controller="Project" asp-action="AddFunds" asp-route-id="@item.PackageId">Buy Now</a>
             }
         }
 

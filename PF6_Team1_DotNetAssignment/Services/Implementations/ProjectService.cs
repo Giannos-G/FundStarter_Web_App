@@ -127,7 +127,8 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
 
         public async Task<List<Project>> GetProjectsAsync()
         {
-            return await _context.Projects.ToListAsync(); 
+            //return await _context.Projects.ToListAsync(); 
+            return await _context.Projects.Include(project => project.MyPackages).ToListAsync();
         }
 
         public async Task<Project> UpdateProjectById(int id, ProjectOption projectOption)
@@ -205,19 +206,34 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
             }
 
             var project = await GetProjectByIdAsync(id);
-
             var package_list = await _context.Packages.Where(pack => pack.ProjectId == id).ToListAsync();
+
             if (package_list == null)
             {
                 _logger.LogError("List is empty or Project has no Packages");
                 return false;
             }
 
-            foreach (var package in package_list){
-                project.MyPackages.Add(package);
-                //Debug.WriteLine(package.Title);
-            }
+            project.MyPackages = package_list;
+
+            //foreach (var package in package_list)
+            //{
+            //    project.MyPackages.Add(package);
+            //    Debug.WriteLine(package.Title);
+            //}
+
             return true;
         }
+
+        public async Task<bool> UpdateCurrentFunds(int id)
+        {
+            var package = await _context.Packages.SingleOrDefaultAsync(pack => pack.PackageId == id);
+            var project = await GetProjectByIdAsync(package.ProjectId);
+            project.CurrentFunds += package.Price;
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+
     }
 }
