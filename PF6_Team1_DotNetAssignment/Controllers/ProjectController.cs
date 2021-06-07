@@ -30,7 +30,7 @@ namespace PF6_Team1_DotNetAssignment.Controllers
             }
 
             var append_to_projects = await _projectService.AppendPackageToProjectAsync(id.Value);
-
+            
             var project = await _projectService.GetProjectByIdAsync(id.Value);
 
             if (project == null)

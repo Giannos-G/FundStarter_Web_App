@@ -214,15 +214,7 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
                 return false;
             }
 
-            project.MyPackages = package_list;
-
-            //foreach (var package in package_list)
-            //{
-            //    project.MyPackages.Add(package);
-            //    Debug.WriteLine(package.Title);
-            //}
-
-            return true;
+             return true;
         }
 
         public async Task<bool> UpdateCurrentFunds(int id)
@@ -230,6 +222,11 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
             var package = await _context.Packages.SingleOrDefaultAsync(pack => pack.PackageId == id);
             var project = await GetProjectByIdAsync(package.ProjectId);
             project.CurrentFunds += package.Price;
+
+            // Update User Backer List !!!!!!!!!
+            
+
+
             await _context.SaveChangesAsync();
             return true;
         }
