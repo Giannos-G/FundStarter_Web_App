@@ -126,8 +126,8 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
         }
 
         public async Task<List<Project>> GetProjectsAsync()
-        {
-            return await _context.Projects.ToListAsync(); 
+        {  
+          return   await _context.Projects.Include(project => project.MyPackages).ToListAsync(); 
         }
 
         public async Task<Project> UpdateProjectById(int id, ProjectOption projectOption)
