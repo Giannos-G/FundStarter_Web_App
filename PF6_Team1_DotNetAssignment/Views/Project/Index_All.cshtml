@@ -23,21 +23,21 @@
         <div>
             @foreach (var item in Model)
             {
-                <div class="container" style="border-style:solid; height:40%">
+                <div class="container" style="border-style:solid; height:70%">
                     <h2 class="text-center"> @Html.DisplayFor(modelItem => item.Title)</h2>
                     <div class="row">
                         <div class="col-md-6 col-lg-9">
-                            <img src="~/img/01.jpg" width="100%" height="70%">
+                            <img src="~/img/01.jpg" width="100%" height="50%">
                             <br />
                             <br />
                             <p>@Html.DisplayFor(modelItem => item.Description)</p>
-                            <label class="text-muted" style="font-weight:600">Category: </label><span style="font-weight:600"> @Html.DisplayFor(modelItem => item.Description)</span>
+                            <label class="text-muted" style="font-weight:600">Category: </label><span style="font-weight:600"> @Html.DisplayFor(modelItem => item.Category)</span>
                             <br />
                             <label class="text-muted" style="font-weight:600">Country: </label><span style="font-weight:600"> @Html.DisplayFor(modelItem => item.Country)</span>
                             <br />
                             <label class="text-muted" style="font-weight:600">Current Funds: </label><span style="font-weight:600"> @Html.DisplayFor(modelItem => item.CurrentFunds)</span>
                             <br />
-                            <label class="text-muted" style="font-weight:600">Required Funds: </label><span style="font-weight:600"> @Html.DisplayFor(modelItem => item.CurrentFunds)</span>
+                            <label class="text-muted" style="font-weight:600">Required Funds: </label><span style="font-weight:600"> @Html.DisplayFor(modelItem => item.RequiredFunds)</span>
                             <br />
                             <label class="text-muted" style="font-weight:600">Estimated Funds: </label>
                             <br />
@@ -46,7 +46,7 @@
                         </div>
 
                         <div class="col-md-6 col-lg-3 offset-lg-0 align-self-center" style=" height:500px; background-color:grey; overflow: scroll;">
-
+                            <h2 style="text-align:center">Packages</h2>
                             @if (item.MyPackages != null)
                             {
 
