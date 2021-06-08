@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using PF6_Team1_DotNetAssignment.Database;
 using PF6_Team1_DotNetAssignment.Models;
 using PF6_Team1_DotNetAssignment.Options;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -29,8 +30,11 @@ namespace PF6_Team1_DotNetAssignment.Services
                 LastName = options.LastName,
                 Email = options.Email,
                 Username = options.Username,
+                Age = options.Age,
+                Gender = options.Gender,
                 Password = options.Password,
-                RegistrationDate = options.RegistrationDate
+                InitialFunds = options.InitialFunds,
+                RegistrationDate = DateTime.Now
             };
 
             await _context.Users.AddAsync(newUser);
@@ -121,5 +125,7 @@ namespace PF6_Team1_DotNetAssignment.Services
             await _context.Users.SingleOrDefaultAsync(user => user.UserId == myUser.UserId);
             return myUser.MyProjects;
         }
+
+        
     }
 }

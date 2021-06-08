@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PF6_Team1_DotNetAssignment.Services;
+using System;
 
 namespace PF6_Team1_DotNetAssignment
 {
@@ -28,8 +29,12 @@ namespace PF6_Team1_DotNetAssignment
 
             services.AddDistributedMemoryCache();
 
-            services.AddSession();
-            //
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(60);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
 
 
         }

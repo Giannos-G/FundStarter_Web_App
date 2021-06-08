@@ -18,18 +18,14 @@ namespace PF6_Team1_DotNetAssignment
             return services;
         }
 
+
+
+
         public static IServiceCollection AddPersistance (this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<Team1DbContext>(options =>
                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
                b => b.MigrationsAssembly(typeof(Team1DbContext).Assembly.FullName)));
-
-            services.AddSession(options =>
-            {
-                options.IdleTimeout = TimeSpan.FromMinutes(60);
-                options.Cookie.HttpOnly = true;
-                options.Cookie.IsEssential = true;
-            });
 
             return services;
         }

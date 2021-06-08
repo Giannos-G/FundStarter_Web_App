@@ -6,5 +6,16 @@
         public Project Project { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
+
+        public ProjectUserBacker(Project project, int userid)
+        {
+            //ProjectId = project.ProjectId;
+            ////Project = project;
+            //UserId = userid;
+            ////User = user;
+        }
+        public ProjectUserBacker() { }
     }
+
+
 }

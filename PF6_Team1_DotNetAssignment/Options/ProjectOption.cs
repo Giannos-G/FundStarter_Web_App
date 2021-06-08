@@ -36,7 +36,7 @@ namespace PF6_Team1_DotNetAssignment.Options
                 CurrentFunds = project.CurrentFunds;
                 CreatedDate = project.CreatedDate;
                 Deadline = project.Deadline;
-                UserId = project.UserId;
+               UserId = project.UserId;
             }
         }
 

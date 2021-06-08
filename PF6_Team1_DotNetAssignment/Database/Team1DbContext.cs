@@ -34,6 +34,14 @@ namespace PF6_Team1_DotNetAssignment.Database
                 .WithMany(u => u.BackedProjects)
                 .HasForeignKey(pu => pu.UserId);
 
+
+            //modelBuilder.Entity<Project>().HasKey(pu => new { pu.ProjectId, pu.UserId });
+
+            //modelBuilder.Entity<Project>()
+            //    .HasOne<User>(pu => pu.UserId)
+            //    .WithMany(u => u.MyProjects)
+            //    .HasForeignKey(pu => pu.UserId);
+
         }
     }
 }

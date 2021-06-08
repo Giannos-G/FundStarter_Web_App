@@ -16,8 +16,8 @@ namespace PF6_Team1_DotNetAssignment.Models
         public string Gender { get; set; }
         public float InitialFunds { get; set; }             // decimal
         public DateTime RegistrationDate { get; set; }
-        public List<ProjectUserBacker> BackedProjects { get; set; }
-        public List<Project> MyProjects { get; set; }
+        public List<ProjectUserBacker> BackedProjects { get; set; } = new List<ProjectUserBacker>();
+        public List<Project> MyProjects { get; set; } = new List<Project>();
 
         //private readonly List<Project> AllProjects = new();             //need to be remove????????
 

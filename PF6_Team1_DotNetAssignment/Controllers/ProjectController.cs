@@ -11,10 +11,12 @@ namespace PF6_Team1_DotNetAssignment.Controllers
     public class ProjectController : Controller
     {
         private readonly IProjectService _projectService;
+        private readonly IUserService _userService;
 
-        public ProjectController (IProjectService projectService)
+        public ProjectController (IProjectService projectService, IUserService userService)
         {
             _projectService = projectService;
+            _userService = userService;
         }
         
         // Get All Projects
@@ -153,6 +155,22 @@ namespace PF6_Team1_DotNetAssignment.Controllers
         public async Task<IActionResult> AddFunds(int id)
         {
             await _projectService.UpdateCurrentFunds(id);
+            var userId1 = HttpContext.Session.GetString("UserSession");
+
+            var user = await _userService.GetUserByIdAsync(int.Parse(userId1));
+
+            var myproject = await _projectService.GetProjectByIdAsync(id);
+
+            var projectuserbacker = new ProjectUserBacker
+            {
+                ProjectId = id,
+                UserId = int.Parse(userId1)
+            };
+
+            user.BackedProjects.Add(projectuserbacker);
+
+            // save changes ..............
+
             return RedirectToAction(nameof(Index));
         }
     }

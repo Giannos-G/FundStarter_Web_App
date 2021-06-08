@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -33,10 +36,33 @@
                             <a class="nav-link text-white" asp-area="" asp-controller="Project" asp-action="Index_All">Project</a>
                         </li>
                     </ul>
-                    <ul class="nav navbar-nav ml-auto">
-                        <li class="nav-item" role="presentation"><a class="nav-link text-white" asp-area="" asp-controller="Users" asp-action="Create">Sign Up</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Login">Login</a></li>
-                    </ul>
+
+                    @if (string.IsNullOrEmpty(Context.Session.GetString("UserSession")))
+                    {
+
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item" role="presentation"><a class="nav-link text-white" asp-area="" asp-controller="Users" asp-action="Create">Sign Up</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Login">Login</a></li>
+                        </ul>
+
+                    }
+
+                    else
+                    {
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item dropdown show">
+                                <button class="btn dropdown-toggle text-white" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span> @TempData["data"]</button>
+                                <div class="dropdown-menu show" role="menu">
+                                    <a class="dropdown-item" role="presentation" href="#">My Projects</a>
+                                    <a class="dropdown-item" role="presentation" href="#">My Funded Projects</a>
+                                    <a class="dropdown-item" role="presentation" asp-controller="Users" asp-action="Details" asp-route-id="@TempData["id"]">Settings</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Index">Log Out</a>
+                                </div>
+                            </li>
+                        </ul>
+                    }
+
+
                 </div>
             </div>
         </nav>

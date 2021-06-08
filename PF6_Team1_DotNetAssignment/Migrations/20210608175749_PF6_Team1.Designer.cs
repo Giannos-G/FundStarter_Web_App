@@ -10,8 +10,8 @@ using PF6_Team1_DotNetAssignment.Database;
 namespace PF6_Team1_DotNetAssignment.Migrations
 {
     [DbContext(typeof(Team1DbContext))]
-    [Migration("20210607085327_Mymig123")]
-    partial class Mymig123
+    [Migration("20210608175749_PF6_Team1")]
+    partial class PF6_Team1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
