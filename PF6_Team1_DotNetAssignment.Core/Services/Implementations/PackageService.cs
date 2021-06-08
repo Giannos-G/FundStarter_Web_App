@@ -1,9 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using PF6_Team1_DotNetAssignment.Database;
-using PF6_Team1_DotNetAssignment.Models;
-using PF6_Team1_DotNetAssignment.Options;
-using System.Collections.Generic;
+using PF6_Team1_DotNetAssignment.Core.Database;
+using PF6_Team1_DotNetAssignment.Core.Models;
+using PF6_Team1_DotNetAssignment.Core.Options;
 using System.Threading.Tasks;
 
 namespace PF6_Team1_DotNetAssignment.Core.Services.Implementations

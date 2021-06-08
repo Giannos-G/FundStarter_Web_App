@@ -15,4 +15,8 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PF6_Team1_DotNetAssignment.Core\PF6_Team1_DotNetAssignment.Core.csproj" />
+  </ItemGroup>
+
 </Project>
