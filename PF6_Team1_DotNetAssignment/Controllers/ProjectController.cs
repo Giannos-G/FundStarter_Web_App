@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using PF6_Team1_DotNetAssignment.Models;
 using PF6_Team1_DotNetAssignment.Options;
 using PF6_Team1_DotNetAssignment.Services;
@@ -66,6 +67,7 @@ namespace PF6_Team1_DotNetAssignment.Controllers
             "Category, Country, MyImage, MyVideo, RequiredFunds, CurrentFunds, CreatedDate, Deadline," +
             "AmountOfViews")] Project project)
         {
+            var userId1= HttpContext.Session.GetString("UserSession");
             if (ModelState.IsValid)
             {
                 await _projectService.CreateProjectAsync(new ProjectOption
@@ -80,7 +82,9 @@ namespace PF6_Team1_DotNetAssignment.Controllers
                     CurrentFunds = project.CurrentFunds,
                     CreatedDate = project.CreatedDate,
                     Deadline = project.Deadline,
-                    AmountOfViews = project.AmountOfViews
+                    AmountOfViews = project.AmountOfViews,
+                    UserId= int.Parse(userId1)
+
                 });
 
                 return RedirectToAction(nameof(Index));

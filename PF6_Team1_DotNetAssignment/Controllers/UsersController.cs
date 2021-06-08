@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using PF6_Team1_DotNetAssignment.Services;
+using Microsoft.AspNetCore.Http;
 
 namespace PF6_Team1_DotNetAssignment.Controllers
 {
@@ -31,7 +32,7 @@ namespace PF6_Team1_DotNetAssignment.Controllers
         }
 
 
-
+        //[HttpGet("{id}")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -45,8 +46,8 @@ namespace PF6_Team1_DotNetAssignment.Controllers
             {
                 return NotFound();
             }
-
-            TempData["id"] = id;
+           var userId1 = HttpContext.Session.GetString("UserSession");
+            TempData["id"] = userId1;
             return View(user);
         }
 

@@ -17,7 +17,8 @@ namespace PF6_Team1_DotNetAssignment.Options
         public float CurrentFunds { get; set; }             //decimal
         public DateTime CreatedDate { get; set; }
         public DateTime Deadline { get; set; }
-        public int AmountOfViews { get; set; }          // To be invesigated...........
+        public int AmountOfViews { get; set; }
+        public int UserId { get; set; }// To be invesigated...........
 
         public ProjectOption() { }
         public ProjectOption(Project project)
@@ -35,6 +36,7 @@ namespace PF6_Team1_DotNetAssignment.Options
                 CurrentFunds = project.CurrentFunds;
                 CreatedDate = project.CreatedDate;
                 Deadline = project.Deadline;
+                UserId = project.UserId;
             }
         }
 
@@ -52,7 +54,8 @@ namespace PF6_Team1_DotNetAssignment.Options
                 RequiredFunds = RequiredFunds,
                 CurrentFunds = CurrentFunds,
                 CreatedDate = CreatedDate,
-                Deadline = Deadline
+                Deadline = Deadline,
+                UserId=UserId
 
             };
         }

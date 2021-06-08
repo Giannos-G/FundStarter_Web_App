@@ -23,6 +23,15 @@ namespace PF6_Team1_DotNetAssignment
             services.AddPersistance(Configuration);
 
             services.AddControllersWithViews();
+
+            //1 For session management
+
+            services.AddDistributedMemoryCache();
+
+            services.AddSession();
+            //
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +53,7 @@ namespace PF6_Team1_DotNetAssignment
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

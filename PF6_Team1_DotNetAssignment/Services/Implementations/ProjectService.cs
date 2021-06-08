@@ -70,7 +70,8 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
                 CreatedDate = DateTime.Now,                         // ????????  
                 Deadline = options.Deadline,
                 //AmountOfViews = options.AmountOfViews
-                AmountOfViews = 0
+                AmountOfViews = 0,
+               UserId=options.UserId
             };
 
             // Save and Update Db

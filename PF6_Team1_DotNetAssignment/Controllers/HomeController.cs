@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using PF6_Team1_DotNetAssignment.Database;
 using PF6_Team1_DotNetAssignment.Models;
+using PF6_Team1_DotNetAssignment.Options;
 using System;
 using System.Diagnostics;
 using System.Linq;
@@ -39,17 +42,22 @@ namespace PF6_Team1_DotNetAssignment.Controllers
             if (ModelState.IsValid)
             {
 
-
+                var userId = new User();
 
                 //var f_password = GetMD5(password);
                 var user = _context.Users.Where(s => s.Email.Equals(email) && s.Password.Equals(password)).ToList();
+                
 
                 if (user.Count() == 1)
                 {
+                    var idSes = user.FirstOrDefault().UserId;
+                    HttpContext.Session.SetString("UserSession", idSes.ToString());
                     //add session
 
-                    TempData["data"] = user.FirstOrDefault().Username;
-                    return RedirectToAction("After_login", new { id = user[0].UserId });
+                    //TempData["data"] = user.FirstOrDefault().Username;
+                    var user1 = HttpContext.Session.GetString("UserSession");
+                  
+                    return RedirectToAction(idSes.ToString(), "After_login");
 
                     // return RedirectToAction("After_login/"+user[0].UserId);
                 }

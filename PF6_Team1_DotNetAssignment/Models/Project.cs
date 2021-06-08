@@ -20,6 +20,7 @@ namespace PF6_Team1_DotNetAssignment.Models
         public DateTime CreatedDate { get; set; }
         public DateTime Deadline { get; set; }
         public int AmountOfViews { get; set; }
+        public int UserId { get; set; }
 
 
     }

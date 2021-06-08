@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using PF6_Team1_DotNetAssignment.Database;
 using PF6_Team1_DotNetAssignment.Services;
 using PF6_Team1_DotNetAssignment.Services.Implementations;
+using System;
 
 namespace PF6_Team1_DotNetAssignment
 {
@@ -22,6 +23,13 @@ namespace PF6_Team1_DotNetAssignment
             services.AddDbContext<Team1DbContext>(options =>
                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
                b => b.MigrationsAssembly(typeof(Team1DbContext).Assembly.FullName)));
+
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(60);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
 
             return services;
         }
