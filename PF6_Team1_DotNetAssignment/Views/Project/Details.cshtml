@@ -4,7 +4,7 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1 style="margin-top: 8%;">Details</h1>
 
 <div>
     <h4>Project</h4>
@@ -34,25 +34,6 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Country)
         </dd>
-
-
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.MyPackages)
-        </dt>
-
-        @if (Model.MyPackages != null)
-         {
-            @foreach (var item in Model.MyPackages)
-            {
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(modelItem => item.Title)
-                </dd>
-            }
-        }
-
-
-
-
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.MyImage)
         </dt>
@@ -62,9 +43,7 @@
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.MyVideo)
         </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.MyVideo)
-        </dd>
+        
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.RequiredFunds)
         </dt>
@@ -95,10 +74,26 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.AmountOfViews)
         </dd>
+        <div class="container-sm" style="align-self:flex-start; border-style:solid;width:50%">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MyPackages)
+        </dt>
+
+        @if (Model.MyPackages != null)
+        {
+            @foreach (var item in Model.MyPackages)
+            {
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(modelItem => item.Title)
+                </dd>
+            }
+        }
+
+</div>
     </dl>
 </div>
 <div>
-    <a asp-controller ="Package" asp-action="Create" asp-route-id="@Model.ProjectId">Add Packages</a> |
+    <a asp-controller="Package" asp-action="Create" asp-route-id="@Model.ProjectId">Add Packages</a> |
     <a asp-action="Edit" asp-route-id="@Model.ProjectId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
