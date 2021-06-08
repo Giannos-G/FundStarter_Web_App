@@ -25,7 +25,8 @@ namespace PF6_Team1_DotNetAssignment.Services
 
         Task<List<PackageOption>> GetPackagesByIdAsync(int id);
 
-        Task<bool> AppendPackageToProjectAsync(int id); 
+        Task<bool> AppendPackageToProjectAsync(int id);
+        Task<bool> UpdateCurrentFunds(int id);
 
     }
 }

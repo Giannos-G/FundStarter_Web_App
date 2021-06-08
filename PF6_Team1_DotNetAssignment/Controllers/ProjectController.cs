@@ -143,5 +143,13 @@ namespace PF6_Team1_DotNetAssignment.Controllers
             await _projectService.UpdateProjectById(projectId, project);
             return RedirectToAction(nameof(Index));
         }
+
+
+
+        public async Task<IActionResult> AddFunds(int id)
+        {
+            await _projectService.UpdateCurrentFunds(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

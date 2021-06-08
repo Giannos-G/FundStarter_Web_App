@@ -213,11 +213,22 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
                 return false;
             }
 
-            foreach (var package in package_list){
-                project.MyPackages.Add(package);
-                //Debug.WriteLine(package.Title);
-            }
             return true;
         }
+
+        public async Task<bool> UpdateCurrentFunds(int id)
+        {
+            var package = await _context.Packages.SingleOrDefaultAsync(pack => pack.PackageId == id);
+            var project = await GetProjectByIdAsync(package.ProjectId);
+            project.CurrentFunds += package.Price;
+
+            // Update User Backer List !!!!!!!!!
+
+
+
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
     }
 }
