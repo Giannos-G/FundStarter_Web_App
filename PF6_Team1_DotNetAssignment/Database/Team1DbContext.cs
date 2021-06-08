@@ -17,7 +17,7 @@ namespace PF6_Team1_DotNetAssignment.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)                   //?????????????????
         {
-            optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=NewPF6_Team1;User Id=sa;Password=admin!@#123");
+            optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=PF6_Team1_New;User Id=sa;Password=admin!@#123");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

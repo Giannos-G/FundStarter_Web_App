@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using PF6_Team1_DotNetAssignment.Database;
 using PF6_Team1_DotNetAssignment.Services;
 using PF6_Team1_DotNetAssignment.Services.Implementations;
+using System;
 
 namespace PF6_Team1_DotNetAssignment
 {
@@ -23,6 +24,22 @@ namespace PF6_Team1_DotNetAssignment
                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
                b => b.MigrationsAssembly(typeof(Team1DbContext).Assembly.FullName)));
 
+            return services;
+        }
+
+        public static IServiceCollection AddSession (this IServiceCollection services, IConfiguration configuration)
+        {
+            //1 For session management
+
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(6000);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+            //
             return services;
         }
     }

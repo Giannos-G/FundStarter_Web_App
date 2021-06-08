@@ -70,9 +70,7 @@ namespace PF6_Team1_DotNetAssignment.Controllers
                     Age = user.Age,
                     Gender = user.Gender,
                     InitialFunds = user.InitialFunds,
-                    RegistrationDate = user.RegistrationDate
-
-
+                    RegistrationDate = DateTime.Now
 
                 });
 

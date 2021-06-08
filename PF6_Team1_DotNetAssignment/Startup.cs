@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PF6_Team1_DotNetAssignment.Services;
+using System;
 
 namespace PF6_Team1_DotNetAssignment
 {
@@ -21,8 +22,8 @@ namespace PF6_Team1_DotNetAssignment
         {
             services.AddCoreServices();
             services.AddPersistance(Configuration);
-
             services.AddControllersWithViews();
+            services.AddSession(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +45,9 @@ namespace PF6_Team1_DotNetAssignment
             app.UseRouting();
 
             app.UseAuthorization();
+
+            //2 added for session management
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

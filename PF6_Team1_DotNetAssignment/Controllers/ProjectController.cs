@@ -47,10 +47,6 @@ namespace PF6_Team1_DotNetAssignment.Controllers
             return View(await _projectService.GetProjectsAsync());
         }
 
-
-
-
-
         //Create a Project 
 
         // GET: Projects/Create
@@ -120,8 +116,8 @@ namespace PF6_Team1_DotNetAssignment.Controllers
         public async Task <IActionResult> Edit(int id)
         {
             var project = await _projectService.GetProjectByIdAsync(id);
-            //Validationsss.....
-            return View(new ProjectOption { // Mapping.........
+            //Validations.....
+            return View(new ProjectOption {                     // Mapping.........
              ProjectId = project.ProjectId,
             Title = project.Title,
             Description = project.Description,

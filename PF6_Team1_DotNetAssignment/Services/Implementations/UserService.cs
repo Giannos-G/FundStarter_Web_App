@@ -30,6 +30,9 @@ namespace PF6_Team1_DotNetAssignment.Services
                 Email = options.Email,
                 Username = options.Username,
                 Password = options.Password,
+                Age = options.Age,
+                Gender = options.Gender,
+                InitialFunds = options.InitialFunds,
                 RegistrationDate = options.RegistrationDate
             };
 

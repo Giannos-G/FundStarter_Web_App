@@ -21,11 +21,15 @@ namespace PF6_Team1_DotNetAssignment.Options
         {
             return new User
             {
+                UserId = UserId,
                 FirstName = FirstName,
                 LastName = LastName,
                 Email = Email,
                 Username = Username,
                 Password = Password,
+                Gender = Gender,
+                Age = Age,
+                InitialFunds = InitialFunds,
                 RegistrationDate = DateTime.Now
             };
 
