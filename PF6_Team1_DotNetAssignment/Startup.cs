@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using PF6_Team1_DotNetAssignment.Services;
+using PF6_Team1_DotNetAssignment.Core.Services;
 using System;
 
 namespace PF6_Team1_DotNetAssignment

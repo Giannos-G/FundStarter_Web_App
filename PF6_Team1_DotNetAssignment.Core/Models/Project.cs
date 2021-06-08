@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PF6_Team1_DotNetAssignment.Models
+namespace PF6_Team1_DotNetAssignment.Core.Models
 {
     public class Project
     {

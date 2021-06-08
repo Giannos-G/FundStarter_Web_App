@@ -1,9 +1,9 @@
-﻿using PF6_Team1_DotNetAssignment.Models;
-using PF6_Team1_DotNetAssignment.Options;
+﻿using PF6_Team1_DotNetAssignment.Core.Models;
+using PF6_Team1_DotNetAssignment.Core.Options;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace PF6_Team1_DotNetAssignment.Services
+namespace PF6_Team1_DotNetAssignment.Core.Services
 {
     public interface IUserService
     {

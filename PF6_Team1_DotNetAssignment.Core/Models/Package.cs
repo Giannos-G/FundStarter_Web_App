@@ -1,4 +1,4 @@
-﻿namespace PF6_Team1_DotNetAssignment.Models
+﻿namespace PF6_Team1_DotNetAssignment.Core.Models
 {
     public class Package
     {

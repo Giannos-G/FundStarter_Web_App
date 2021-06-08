@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PF6_Team1_DotNetAssignment.Models;
+using PF6_Team1_DotNetAssignment.Core.Models;
 
-namespace PF6_Team1_DotNetAssignment.Database
+namespace PF6_Team1_DotNetAssignment.Core.Database
 {
     public class Team1DbContext : DbContext
     {

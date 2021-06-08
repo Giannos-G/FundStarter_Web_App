@@ -1,8 +1,7 @@
-﻿using PF6_Team1_DotNetAssignment.Options;
-using System.Collections.Generic;
+﻿using PF6_Team1_DotNetAssignment.Core.Options;
 using System.Threading.Tasks;
 
-namespace PF6_Team1_DotNetAssignment.Services
+namespace PF6_Team1_DotNetAssignment.Core.Services
 {
     public interface IPackageService
     {

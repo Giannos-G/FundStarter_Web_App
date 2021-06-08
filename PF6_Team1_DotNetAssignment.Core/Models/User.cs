@@ -1,8 +1,7 @@
-﻿using PF6_Team1_DotNetAssignment.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
-namespace PF6_Team1_DotNetAssignment.Models
+namespace PF6_Team1_DotNetAssignment.Core.Models
 {
     public class User
     {

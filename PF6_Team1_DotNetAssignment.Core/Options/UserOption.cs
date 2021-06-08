@@ -1,7 +1,7 @@
-﻿using PF6_Team1_DotNetAssignment.Models;
+﻿using PF6_Team1_DotNetAssignment.Core.Models;
 using System;
 
-namespace PF6_Team1_DotNetAssignment.Options
+namespace PF6_Team1_DotNetAssignment.Core.Options
 {
     public class UserOption
     {
