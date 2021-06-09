@@ -10,8 +10,8 @@ using PF6_Team1_DotNetAssignment.Database;
 namespace PF6_Team1_DotNetAssignment.Migrations
 {
     [DbContext(typeof(Team1DbContext))]
-    [Migration("20210609095811_PF6_Team1_New")]
-    partial class PF6_Team1_New
+    [Migration("20210609132405_PF6_Team1")]
+    partial class PF6_Team1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,9 +27,6 @@ namespace PF6_Team1_DotNetAssignment.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AmountOfBackers")
-                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -60,9 +57,6 @@ namespace PF6_Team1_DotNetAssignment.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AmountOfViews")
-                        .HasColumnType("int");
-
                     b.Property<string>("Category")
                         .HasColumnType("nvarchar(max)");
 
@@ -82,9 +76,6 @@ namespace PF6_Team1_DotNetAssignment.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MyImage")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MyVideo")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<float>("RequiredFunds")
@@ -141,9 +132,6 @@ namespace PF6_Team1_DotNetAssignment.Migrations
 
                     b.Property<string>("Gender")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<float>("InitialFunds")
-                        .HasColumnType("real");
 
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");

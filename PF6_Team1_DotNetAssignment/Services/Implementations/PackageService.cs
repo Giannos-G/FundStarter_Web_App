@@ -78,7 +78,7 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
             dbPackage.Description = packageOption.Description;
             dbPackage.Price = packageOption.Price;
             dbPackage.Reward = packageOption.Reward;
-            dbPackage.AmountOfBackers = packageOption.AmountOfBackers;
+            //dbPackage.AmountOfBackers = packageOption.AmountOfBackers;
 
             await _context.SaveChangesAsync();
 

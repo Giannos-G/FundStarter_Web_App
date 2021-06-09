@@ -9,7 +9,7 @@ namespace PF6_Team1_DotNetAssignment.Options
         public string Title { get; set; }
         public string Description { get; set; }
         public string Reward { get; set; }
-        public int AmountOfBackers { get; set; }
+        //public int AmountOfBackers { get; set; }
         public int ProjectId { get; set; }
 
         public PackageOption() { }
@@ -22,7 +22,7 @@ namespace PF6_Team1_DotNetAssignment.Options
                 Description = package.Description;
                 Price = package.Price;
                 Reward = package.Reward;
-                AmountOfBackers = package.AmountOfBackers;
+                //AmountOfBackers = package.AmountOfBackers;
 
             }
         }
@@ -36,7 +36,7 @@ namespace PF6_Team1_DotNetAssignment.Options
                 Description = Description,
                 Price = Price,
                 Reward = Reward,
-                AmountOfBackers = AmountOfBackers,
+                //AmountOfBackers = AmountOfBackers,
                 ProjectId = ProjectId
             };
         }

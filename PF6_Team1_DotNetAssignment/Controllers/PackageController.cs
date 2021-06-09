@@ -51,7 +51,7 @@ namespace PF6_Team1_DotNetAssignment.Controllers
         // POST: PackageController/Create
         [HttpPost("Create/{id}")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(int id, [Bind("PackageId,Title,Price,Description,Reward,AmountOfBackers")] Package package)
+        public async Task<IActionResult> Create(int id, [Bind("PackageId,Title,Price,Description,Reward")] Package package)
         {
             if (ModelState.IsValid)
             {
@@ -61,7 +61,7 @@ namespace PF6_Team1_DotNetAssignment.Controllers
                     Price = package.Price,
                     Description = package.Description,
                     Reward = package.Reward,
-                    AmountOfBackers = package.AmountOfBackers,
+                    //AmountOfBackers = package.AmountOfBackers,
                     ProjectId = id
                 });
 

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PF6_Team1_DotNetAssignment.Migrations
 {
-    public partial class PF6_Team1_New : Migration
+    public partial class PF6_Team1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,12 +18,10 @@ namespace PF6_Team1_DotNetAssignment.Migrations
                     Category = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     MyImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    MyVideo = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     RequiredFunds = table.Column<float>(type: "real", nullable: false),
                     CurrentFunds = table.Column<float>(type: "real", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Deadline = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    AmountOfViews = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -44,7 +42,6 @@ namespace PF6_Team1_DotNetAssignment.Migrations
                     Username = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Age = table.Column<int>(type: "int", nullable: false),
                     Gender = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    InitialFunds = table.Column<float>(type: "real", nullable: false),
                     RegistrationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -62,7 +59,6 @@ namespace PF6_Team1_DotNetAssignment.Migrations
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Reward = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AmountOfBackers = table.Column<int>(type: "int", nullable: false),
                     ProjectId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

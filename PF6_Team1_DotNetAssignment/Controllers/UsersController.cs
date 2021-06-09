@@ -56,7 +56,7 @@ namespace PF6_Team1_DotNetAssignment.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("UserId, FirstName, LastName," +
-            "Username, Email, Password, Age, Gender, InitialFunds, RegistrationDate")] User user)
+            "Username, Email, Password, Age, Gender, RegistrationDate")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -70,7 +70,7 @@ namespace PF6_Team1_DotNetAssignment.Controllers
                     Password = user.Password,
                     Age = user.Age,
                     Gender = user.Gender,
-                    InitialFunds = user.InitialFunds,
+                   // InitialFunds = user.InitialFunds,
                     RegistrationDate = user.RegistrationDate
 
 

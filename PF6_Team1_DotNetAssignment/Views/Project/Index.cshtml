@@ -28,9 +28,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.MyImage)
             </th>
-            <th>
-                @html.displaynamefor(model => model.myvideo)
-            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.MyVideo)
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.RequiredFunds)
             </th>
@@ -43,9 +43,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Deadline)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.AmountOfViews)
-            </th>
+            </th>*@
 
             <th></th>
         </tr>
@@ -69,9 +69,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.MyImage)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.MyVideo)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.RequiredFunds)
             </td>
@@ -84,9 +84,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Deadline)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.AmountOfViews)
-            </td>
+            </td>*@
 
             <td>
                 @*<a asp-action="CreatePackages" asp-route-id="@item.ProjectId">Add Packages</a> |*@

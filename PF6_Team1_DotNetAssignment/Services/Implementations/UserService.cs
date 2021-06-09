@@ -33,7 +33,7 @@ namespace PF6_Team1_DotNetAssignment.Services
                 Age = options.Age,
                 Gender = options.Gender,
                 Password = options.Password,
-                InitialFunds = options.InitialFunds,
+                //InitialFunds = options.InitialFunds,
                 RegistrationDate = DateTime.Now
             };
 

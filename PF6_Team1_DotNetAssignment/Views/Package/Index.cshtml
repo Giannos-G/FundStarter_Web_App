@@ -25,9 +25,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Reward)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.AmountOfBackers)
-            </th>
+            </th>*@
 
             <th></th>
         </tr>
@@ -48,9 +48,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Reward)
                 </td>
-                <td>
+                @*<td>
                     @Html.DisplayFor(modelItem => item.AmountOfBackers)
-                </td>
+                </td>*@
                 <td>
                     <a asp-action="Details" asp-route-id="@item.PackageId">Details</a> |
                     <!--  <a asp-action="Delete" asp-route-id="@item.ProjectId"> Delete </a> -->

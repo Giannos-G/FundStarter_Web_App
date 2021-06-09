@@ -14,7 +14,7 @@ namespace PF6_Team1_DotNetAssignment.Models
         public string Username { get; set; }
         public int Age { get; set; }
         public string Gender { get; set; }
-        public float InitialFunds { get; set; }             // decimal
+        //public float InitialFunds { get; set; }             // decimal
         public DateTime RegistrationDate { get; set; }
         public List<ProjectUserBacker> BackedProjects { get; set; } = new List<ProjectUserBacker>();
        // public List<Project> MyProjects { get; set; } = new List<Project>();

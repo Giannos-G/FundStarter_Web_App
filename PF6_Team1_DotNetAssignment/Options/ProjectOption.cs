@@ -12,12 +12,12 @@ namespace PF6_Team1_DotNetAssignment.Options
         public string Category { get; set; }
         public string Country { get; set; }
         public string MyImage { get; set; }
-        public string MyVideo { get; set; }
+        //public string MyVideo { get; set; }
         public float RequiredFunds { get; set; }            //decimal
         public float CurrentFunds { get; set; }             //decimal
         public DateTime CreatedDate { get; set; }
         public DateTime Deadline { get; set; }
-        public int AmountOfViews { get; set; }
+       // public int AmountOfViews { get; set; }
         public int UserId { get; set; }// To be invesigated...........
 
         public ProjectOption() { }
@@ -31,7 +31,7 @@ namespace PF6_Team1_DotNetAssignment.Options
                 Category = project.Category;
                 Country = project.Country;
                 MyImage = project.MyImage;
-                MyVideo = project.MyVideo;
+                //MyVideo = project.MyVideo;
                 RequiredFunds = project.RequiredFunds;
                 CurrentFunds = project.CurrentFunds;
                 CreatedDate = project.CreatedDate;
@@ -50,7 +50,7 @@ namespace PF6_Team1_DotNetAssignment.Options
                 Category = Category,
                 Country = Country,
                 MyImage = MyImage,
-                MyVideo = MyVideo,
+                //MyVideo = MyVideo,
                 RequiredFunds = RequiredFunds,
                 CurrentFunds = CurrentFunds,
                 CreatedDate = CreatedDate,

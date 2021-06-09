@@ -64,14 +64,14 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
                 Category = options.Category,
                 Country = options.Country,
                 MyImage = options.MyImage,
-                MyVideo = options.MyVideo,
+                //MyVideo = options.MyVideo,
                 RequiredFunds = options.RequiredFunds,
                 //CurrentFunds = options.CurrentFunds,
                 CurrentFunds = 0, 
                 CreatedDate = DateTime.Now,                         // ????????  
                 Deadline = options.Deadline,
                 //AmountOfViews = options.AmountOfViews
-                AmountOfViews = 0,
+                //AmountOfViews = 0,
                UserId=options.UserId
             };
 
@@ -146,12 +146,12 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
             ProjectToUpdate.Category = projectOption.Category;
             ProjectToUpdate.Country = projectOption.Country;
             ProjectToUpdate.MyImage = projectOption.MyImage;
-            ProjectToUpdate.MyVideo = projectOption.MyVideo;
+           // ProjectToUpdate.MyVideo = projectOption.MyVideo;
             ProjectToUpdate.RequiredFunds = projectOption.RequiredFunds;
             ProjectToUpdate.CurrentFunds = projectOption.CurrentFunds;
             ProjectToUpdate.CreatedDate = projectOption.CreatedDate;
             ProjectToUpdate.Deadline = projectOption.Deadline;
-            ProjectToUpdate.AmountOfViews = projectOption.AmountOfViews;        //?????????????????????
+           // ProjectToUpdate.AmountOfViews = projectOption.AmountOfViews;        //?????????????????????
             
             // Save and Update Db
             await _context.SaveChangesAsync();
@@ -190,7 +190,7 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
                     Price = Package.Price,
                     Description = Package.Description,
                     Reward = Package.Reward,
-                    AmountOfBackers = Package.AmountOfBackers,
+                    //AmountOfBackers = Package.AmountOfBackers,
                     ProjectId = Package.ProjectId
                 });
             }
@@ -234,6 +234,30 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
 
             await _context.SaveChangesAsync();
             return true;
+        }
+
+        public async Task<List<Project>> GetTrendingProject()
+        {
+            var max = new float();
+            max = 0;
+            var return_project_list = new List<Project>();
+            var project_list = await _context.Projects.Include(project => project.MyPackages).ToListAsync();
+            //Get Max Current Funds
+            foreach (var project in project_list)
+            {
+                if (project.CurrentFunds >= max)
+                {
+                    max = project.CurrentFunds;
+                    return_project_list.Add(project);
+                } 
+            }
+
+            return_project_list.Reverse();
+            //var variab = return_project_list.Count - 1;
+            
+            return_project_list.RemoveRange(2, return_project_list.Count-2);
+
+            return return_project_list;
         }
     }
 }

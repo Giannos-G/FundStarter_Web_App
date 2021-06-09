@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PF6_Team1_DotNetAssignment.Database;
 using PF6_Team1_DotNetAssignment.Models;
+using PF6_Team1_DotNetAssignment.Services;
 using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace PF6_Team1_DotNetAssignment.Controllers
 {
@@ -14,17 +16,20 @@ namespace PF6_Team1_DotNetAssignment.Controllers
         public string str;
         private readonly ILogger<HomeController> _logger;
         private readonly Team1DbContext _context;
+        private readonly IProjectService _projectService;
 
-        public HomeController(Team1DbContext context, ILogger<HomeController> logger)
+        public HomeController(Team1DbContext context, ILogger<HomeController> logger, IProjectService projectService)
         {
             _context = context;
             _logger = logger;
+            _projectService = projectService;
         }
 
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            //return View();
+            return View(await _projectService.GetTrendingProject());
         }
 
         public IActionResult Login()

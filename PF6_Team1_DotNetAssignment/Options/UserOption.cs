@@ -14,7 +14,7 @@ namespace PF6_Team1_DotNetAssignment.Options
         public DateTime RegistrationDate { get; set; }
         public int Age { get; set; }
         public string Gender { get; set; }
-        public float InitialFunds { get; set; }             // decimal
+        //public float InitialFunds { get; set; }             // decimal
 
 
         public User GetUser()
@@ -42,7 +42,7 @@ namespace PF6_Team1_DotNetAssignment.Options
                 Username = user.Username;
                 Gender = user.Gender;
                 Age = user.Age;
-                InitialFunds = user.InitialFunds;
+                //InitialFunds = user.InitialFunds;
                 Password = user.Password;
                 RegistrationDate = user.RegistrationDate;
             }

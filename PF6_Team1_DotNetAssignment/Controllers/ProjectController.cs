@@ -50,10 +50,6 @@ namespace PF6_Team1_DotNetAssignment.Controllers
             return View(await _projectService.GetProjectsAsync());
         }
 
-
-
-
-
         //Create a Project 
 
         // GET: Projects/Create
@@ -66,8 +62,7 @@ namespace PF6_Team1_DotNetAssignment.Controllers
         [ValidateAntiForgeryToken]
 
         public async Task<IActionResult> Create([Bind("ProjectId, Title, Description," +
-            "Category, Country, MyImage, MyVideo, RequiredFunds, CurrentFunds, CreatedDate, Deadline," +
-            "AmountOfViews")] Project project)
+            "Category, Country, MyImage, RequiredFunds, CurrentFunds, CreatedDate, Deadline")] Project project)
         {
             var userId1= HttpContext.Session.GetString("UserSession");
             if (ModelState.IsValid)
@@ -79,12 +74,12 @@ namespace PF6_Team1_DotNetAssignment.Controllers
                     Category = project.Category,
                     Country = project.Country,
                     MyImage = project.MyImage,
-                    MyVideo = project.MyVideo,
+                    //MyVideo = project.MyVideo,
                     RequiredFunds = project.RequiredFunds,
                     CurrentFunds = project.CurrentFunds,
                     CreatedDate = project.CreatedDate,
                     Deadline = project.Deadline,
-                    AmountOfViews = project.AmountOfViews,
+                    //AmountOfViews = project.AmountOfViews,
                     UserId= int.Parse(userId1)
 
                 });
@@ -134,7 +129,7 @@ namespace PF6_Team1_DotNetAssignment.Controllers
             Category = project.Category,
             Country = project.Country,
             MyImage = project.MyImage,
-            MyVideo= project.MyVideo,
+            //MyVideo= project.MyVideo,
             RequiredFunds = project.RequiredFunds,
             Deadline = project.Deadline
             });           
@@ -144,7 +139,7 @@ namespace PF6_Team1_DotNetAssignment.Controllers
         [ValidateAntiForgeryToken]
 
         public async Task<IActionResult> Edit(int projectId, [Bind("ProjectId, Title, Description," +
-            "Category, Country, MyImage, MyVideo, RequiredFunds, Deadline")] ProjectOption project)                             
+            "Category, Country, MyImage, RequiredFunds, Deadline")] ProjectOption project)                             
         {
             await _projectService.UpdateProjectById(projectId, project);
             return RedirectToAction(nameof(Index));
