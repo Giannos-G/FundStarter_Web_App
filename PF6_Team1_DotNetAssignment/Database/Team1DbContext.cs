@@ -14,25 +14,25 @@ namespace PF6_Team1_DotNetAssignment.Database
             : base(options)
         {
         }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)                   //?????????????????
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)                   
         {
-            optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=NewPF6_Team1;User Id=sa;Password=admin!@#123");
+            optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=NewPF6_Team1_New;User Id=sa;Password=admin!@#123");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ProjectUserBacker>().HasKey(pu => new { pu.ProjectId, pu.UserId });
+            //modelBuilder.Entity<ProjectUserBacker>().HasKey(pu => new { pu.ProjectKey, pu.UserKey });
+            //modelBuilder.Entity<ProjectUserBacker>().HasKey(pu => new { pu.ProjectUserBackerId, pu.ProjectKey, pu.UserKey });
 
             modelBuilder.Entity<ProjectUserBacker>()
                 .HasOne<Project>(pu => pu.Project)
                 .WithMany(u => u.UserBackerList)
-                .HasForeignKey(pu => pu.ProjectId);
+                .HasForeignKey(pu => pu.ProjectKey);
 
             modelBuilder.Entity<ProjectUserBacker>()
                 .HasOne<User>(pu => pu.User)
                 .WithMany(u => u.BackedProjects)
-                .HasForeignKey(pu => pu.UserId);
+                .HasForeignKey(pu => pu.UserKey);
 
 
             //modelBuilder.Entity<Project>().HasKey(pu => new { pu.ProjectId, pu.UserId });

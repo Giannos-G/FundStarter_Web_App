@@ -5,7 +5,6 @@ using PF6_Team1_DotNetAssignment.Models;
 using PF6_Team1_DotNetAssignment.Options;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,13 +14,15 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
     {
         private readonly Team1DbContext _context;
         private readonly ILogger<ProjectService> _logger;
+        private readonly IUserService _userService;
 
         //private readonly IProductValidation _productValidator;
 
-        public ProjectService (Team1DbContext context, ILogger<ProjectService> logger)
+        public ProjectService (Team1DbContext context, ILogger<ProjectService> logger, IUserService userService)
         {
             _context = context;
             _logger = logger;
+            _userService = userService;
         }
         public async Task<Project> CreateProjectAsync(ProjectOption options)
         {
@@ -217,19 +218,22 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
             return true;
         }
 
-        public async Task<bool> UpdateCurrentFunds(int id)
+        public async Task<bool> UpdateCurrentFunds(int id, int userId)
         {
             var package = await _context.Packages.SingleOrDefaultAsync(pack => pack.PackageId == id);
             var project = await GetProjectByIdAsync(package.ProjectId);
             project.CurrentFunds += package.Price;
-
-            // Update User Backer List !!!!!!!!!
-
-
+            // Update User Backer List:
+            var user = await _userService.GetUserByIdAsync(userId);
+            var projectuserbacker = new ProjectUserBacker
+            {
+                ProjectKey = id,
+                UserKey = userId
+            };
+            user.BackedProjects.Add(projectuserbacker);
 
             await _context.SaveChangesAsync();
             return true;
         }
-
     }
 }

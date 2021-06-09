@@ -11,8 +11,8 @@ namespace PF6_Team1_DotNetAssignment.Models
         public string Description { get; set; }
         public string Category { get; set; }
         public string Country { get; set; }
-        public List<Package> MyPackages { get; set; }
-        public List<ProjectUserBacker> UserBackerList { get; set; }          // !!!!!!!!!!!!!
+        public List<Package> MyPackages { get; set; } = new List<Package>();
+        public List<ProjectUserBacker> UserBackerList { get; set; } = new List<ProjectUserBacker>();
         public string MyImage { get; set; }
         public string MyVideo { get; set; }
         public float RequiredFunds { get; set; }            // decimal

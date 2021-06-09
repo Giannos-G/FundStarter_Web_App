@@ -10,8 +10,8 @@ using PF6_Team1_DotNetAssignment.Database;
 namespace PF6_Team1_DotNetAssignment.Migrations
 {
     [DbContext(typeof(Team1DbContext))]
-    [Migration("20210608175749_PF6_Team1")]
-    partial class PF6_Team1
+    [Migration("20210609095811_PF6_Team1_New")]
+    partial class PF6_Team1_New
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -93,27 +93,32 @@ namespace PF6_Team1_DotNetAssignment.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("ProjectId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Projects");
                 });
 
             modelBuilder.Entity("PF6_Team1_DotNetAssignment.Models.ProjectUserBacker", b =>
                 {
-                    b.Property<int>("ProjectId")
+                    b.Property<int>("ProjectUserBackerId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ProjectKey")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
+                    b.Property<int>("UserKey")
                         .HasColumnType("int");
 
-                    b.HasKey("ProjectId", "UserId");
+                    b.HasKey("ProjectUserBackerId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("ProjectKey");
+
+                    b.HasIndex("UserKey");
 
                     b.ToTable("ProjectUserBackers");
                 });
@@ -166,24 +171,17 @@ namespace PF6_Team1_DotNetAssignment.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("PF6_Team1_DotNetAssignment.Models.Project", b =>
-                {
-                    b.HasOne("PF6_Team1_DotNetAssignment.Models.User", null)
-                        .WithMany("MyProjects")
-                        .HasForeignKey("UserId");
-                });
-
             modelBuilder.Entity("PF6_Team1_DotNetAssignment.Models.ProjectUserBacker", b =>
                 {
                     b.HasOne("PF6_Team1_DotNetAssignment.Models.Project", "Project")
                         .WithMany("UserBackerList")
-                        .HasForeignKey("ProjectId")
+                        .HasForeignKey("ProjectKey")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("PF6_Team1_DotNetAssignment.Models.User", "User")
                         .WithMany("BackedProjects")
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("UserKey")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -202,8 +200,6 @@ namespace PF6_Team1_DotNetAssignment.Migrations
             modelBuilder.Entity("PF6_Team1_DotNetAssignment.Models.User", b =>
                 {
                     b.Navigation("BackedProjects");
-
-                    b.Navigation("MyProjects");
                 });
 #pragma warning restore 612, 618
         }

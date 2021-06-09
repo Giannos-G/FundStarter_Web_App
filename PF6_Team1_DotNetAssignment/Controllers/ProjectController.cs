@@ -154,20 +154,20 @@ namespace PF6_Team1_DotNetAssignment.Controllers
 
         public async Task<IActionResult> AddFunds(int id)
         {
-            await _projectService.UpdateCurrentFunds(id);
             var userId1 = HttpContext.Session.GetString("UserSession");
+            await _projectService.UpdateCurrentFunds(id, int.Parse(userId1));
 
-            var user = await _userService.GetUserByIdAsync(int.Parse(userId1));
+            //var user = await _userService.GetUserByIdAsync(int.Parse(userId1));
 
-            var myproject = await _projectService.GetProjectByIdAsync(id);
+            //var myproject = await _projectService.GetProjectByIdAsync(id);
 
-            var projectuserbacker = new ProjectUserBacker
-            {
-                ProjectId = id,
-                UserId = int.Parse(userId1)
-            };
+            //var projectuserbacker = new ProjectUserBacker
+            //{
+            //    ProjectId = id,
+            //    UserId = int.Parse(userId1)
+            //};
 
-            user.BackedProjects.Add(projectuserbacker);
+            //user.BackedProjects.Add(projectuserbacker);
 
             // save changes ..............
 

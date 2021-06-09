@@ -55,7 +55,7 @@
                                 <div class="dropdown-menu show" role="menu">
                                     <a class="dropdown-item" role="presentation" href="#">My Projects</a>
                                     <a class="dropdown-item" role="presentation" href="#">My Funded Projects</a>
-                                    <a class="dropdown-item" role="presentation" asp-controller="Users" asp-action="Details" asp-route-id="@TempData["id"]">Settings</a>
+                                    <a class="dropdown-item" role="presentation" asp-controller="Users" asp-action="Details" asp-route-id="@Context.Session.GetString("UserSession")">Settings</a>
                                     <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Index">Log Out</a>
                                 </div>
                             </li>

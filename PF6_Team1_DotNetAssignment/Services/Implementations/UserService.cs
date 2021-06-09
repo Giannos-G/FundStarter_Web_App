@@ -107,24 +107,24 @@ namespace PF6_Team1_DotNetAssignment.Services
         }
 
         //Get a list with my created projects!
-        public async Task<List<Project>> GetAllMyProjectsAsync(int? UserId)
-        {
-            if (UserId == null)
-            {
-                _logger.LogError("Invalid user ID!");
-                return null;
-            }
-            var myUser = await GetUserByIdAsync(UserId.Value);
+        //public async Task<List<Project>> GetAllMyProjectsAsync(int? UserId)
+        //{
+        //    if (UserId == null)
+        //    {
+        //        _logger.LogError("Invalid user ID!");
+        //        return null;
+        //    }
+        //    var myUser = await GetUserByIdAsync(UserId.Value);
 
-            if (myUser.MyProjects == null)
-            {
-                _logger.LogError($"The user {myUser.LastName} does not have any created projects yet!");
-                return null;
-            }
+        //    if (myUser.MyProjects == null)
+        //    {
+        //        _logger.LogError($"The user {myUser.LastName} does not have any created projects yet!");
+        //        return null;
+        //    }
 
-            await _context.Users.SingleOrDefaultAsync(user => user.UserId == myUser.UserId);
-            return myUser.MyProjects;
-        }
+        //    await _context.Users.SingleOrDefaultAsync(user => user.UserId == myUser.UserId);
+        //    return myUser.MyProjects;
+        //}
 
         
     }

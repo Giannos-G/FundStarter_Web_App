@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Projects</h1>
+<h1 style="margin-top: 8%;">Projects</h1>
 
 
 <p>
@@ -29,7 +29,7 @@
                 @Html.DisplayNameFor(model => model.MyImage)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MyVideo)
+                @html.displaynamefor(model => model.myvideo)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.RequiredFunds)
@@ -145,9 +145,9 @@
                 let td5 = tr.insertCell(4);
                 let MyImageNode = document.createTextNode(item.MyImage);
                 td5.appendChild(MyImageNode);
-                let td6 = tr.insertCell(5);
-                let MyVideoNode = document.createTextNode(item.MyVideo);
-                td6.appendChild(MyVideoNode);
+                let td6 = tr.insertcell(5);
+                let myvideonode = document.createtextnode(item.myvideo);
+                td6.appendchild(myvideonode);
                 let td7 = tr.insertCell(6);
                 let RequiredFundsNode = document.createTextNode(item.RequiredFunds);
                 td7.appendChild(RequiredFundsNode);
