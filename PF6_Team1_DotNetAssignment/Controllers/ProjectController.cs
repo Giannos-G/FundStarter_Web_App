@@ -152,21 +152,10 @@ namespace PF6_Team1_DotNetAssignment.Controllers
             var userId1 = HttpContext.Session.GetString("UserSession");
             await _projectService.UpdateCurrentFunds(id, int.Parse(userId1));
 
-            //var user = await _userService.GetUserByIdAsync(int.Parse(userId1));
+            return RedirectToAction("Index", "Home");
 
-            //var myproject = await _projectService.GetProjectByIdAsync(id);
-
-            //var projectuserbacker = new ProjectUserBacker
-            //{
-            //    ProjectId = id,
-            //    UserId = int.Parse(userId1)
-            //};
-
-            //user.BackedProjects.Add(projectuserbacker);
-
-            // save changes ..............
-
-            return RedirectToAction(nameof(Index));
+            //return RedirectToAction(nameof(Index));
         }
+
     }
 }

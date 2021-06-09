@@ -1,5 +1,38 @@
-﻿@model IEnumerable<PF6_Team1_DotNetAssignment.Models.Project>
-@using Microsoft.AspNetCore.Http
+﻿@*@model IEnumerable<PF6_Team1_DotNetAssignment.Models.Project>
+
+@{
+    ViewData["Title"] = "GetBackedProjects";
+}
+
+<h1>GetBackedProjects</h1>
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="row">
+
+        <div class="container-sm" style="align-self:flex-start; border-style:solid;width:50%">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+
+            @foreach (var item in Model)
+            {
+                <td class="col-sm-2">
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+            }
+        </div>
+
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>*@
+
+
+
+@model IEnumerable<PF6_Team1_DotNetAssignment.Models.Project>
 
 <!DOCTYPE html>
 <html>
@@ -23,8 +56,6 @@
                     <h2 class="text-center"> @Html.DisplayFor(modelItem => item.Title)</h2>
                     <div class="row">
                         <div class="col-md-6 col-lg-9">
-                            <img src="~/img/01.jpg" width="100%" height="50%">
-                            <br />
                             <br />
                             <p>@Html.DisplayFor(modelItem => item.Description)</p>
                             <label class="text-muted" style="font-weight:600">Category: </label><span style="font-weight:600"> @Html.DisplayFor(modelItem => item.Category)</span>
@@ -35,42 +66,43 @@
                             <br />
                             <label class="text-muted" style="font-weight:600">Required Funds: </label><span style="font-weight:600"> @Html.DisplayFor(modelItem => item.RequiredFunds)</span>
                             <br />
-                            <label class="text-muted" style="font-weight:600">Estimated Funds: </label>
+                            <label class="text-muted" style="font-weight:600">Estimated Date: </label>
                             <br />
                             <span style="font-weight:600;"> @Html.DisplayFor(modelItem => item.Deadline)</span>
 
                         </div>
 
-                        <div class="col-md-6 col-lg-3 offset-lg-0 align-self-center" style=" height:500px; background-color:grey; overflow: scroll;">
-                            <h2 style="text-align:center">Packages</h2>
-                            @if (item.MyPackages != null)
-                            {
+                        @*<div class="col-md-6 col-lg-3 offset-lg-0 align-self-center" style=" height:500px; background-color:grey; overflow: scroll;">
+                        <h2 style="text-align:center">Packages</h2>
+                        @if (item.MyPackages != null)
+                        {
 
-                                @foreach (var item1 in item.MyPackages)
-                                {<div class="card">
-                                        <div class="card-body">
-                                            <h4 class="card-title mb-1" style="text-align:center">@Html.DisplayFor(modelItem => item1.Title)</h4>
-                                            <br />
-                                            <h6 class="text-muted card-subtitle mb-2" style="text-align: center; text-decoration: underline ">@Html.DisplayFor(modelItem => item1.Reward)</h6>
-                                            <p class="card-text">@Html.DisplayFor(modelItem => item1.Description)</p>
-                                            <h6 class="text-muted card-subtitle mb-2"><span>Price: </span>@Html.DisplayFor(modelItem => item1.Price)</h6>
-
-
-
-                                            @if (!string.IsNullOrEmpty(Context.Session.GetString("UserSession")))
-                                            {
-                                                <a asp-controller="Project" asp-action="AddFunds" asp-route-id="@item1.PackageId">Buy Now</a>
-                                            }
-                                        </div>
+                            @foreach (var item1 in item.MyPackages)
+                            {<div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-1" style="text-align:center">@Html.DisplayFor(modelItem => item1.Title)</h4>
+                                        <br />
+                                        <h6 class="text-muted card-subtitle mb-2" style="text-align: center; text-decoration: underline ">@Html.DisplayFor(modelItem => item1.Reward)</h6>
+                                        <p class="card-text">@Html.DisplayFor(modelItem => item1.Description)</p>
+                                        <h6 class="text-muted card-subtitle mb-2"><span>Price: </span>@Html.DisplayFor(modelItem => item1.Price)</h6>
+                                        <a class="card-link" href="#">Link</a>
+                                        <a class="card-link" href="#">Link</a>
                                     </div>
-                                }
+                                </div>
+
+
 
                             }
 
-                        </div>
+                        }
+
+                    </div>*@
                     </div>
                 </div>
             }
+            <div>
+                <a asp-controller="Home" asp-action="Index">Back to Home</a>
+            </div>
         </div>
         <!-- End: 1 Row 2 Columns -->
 

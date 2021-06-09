@@ -5,6 +5,7 @@ using PF6_Team1_DotNetAssignment.Models;
 using PF6_Team1_DotNetAssignment.Options;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace PF6_Team1_DotNetAssignment.Services
@@ -86,7 +87,7 @@ namespace PF6_Team1_DotNetAssignment.Services
 
         //Get a list with backed projects!
         //na doume an o endiamesos pinakas mporei na mas dwsei th lista
-        public async Task<List<ProjectUserBacker>> GetAllMyBackedProjectsAsync(int? UserId)
+        public async Task<List<Project>> GetAllMyBackedProjectsAsync(int? UserId)
         {
             if (UserId == null)
             {
@@ -102,30 +103,14 @@ namespace PF6_Team1_DotNetAssignment.Services
                 return null;
             }
 
-            await _context.Users.SingleOrDefaultAsync(user => user.UserId == myUser.UserId);
-            return myUser.BackedProjects;
+            return await _context.ProjectUserBackers.Where(p => p.User.UserId == UserId).Select(p => p.Project).ToListAsync();
+            //return myUser.BackedProjects;
         }
 
-        //Get a list with my created projects!
-        //public async Task<List<Project>> GetAllMyProjectsAsync(int? UserId)
-        //{
-        //    if (UserId == null)
-        //    {
-        //        _logger.LogError("Invalid user ID!");
-        //        return null;
-        //    }
-        //    var myUser = await GetUserByIdAsync(UserId.Value);
+        public async Task<List<Project>> GetAllMyProjectsAsync(int? UserId)
+        {
+            return await _context.Projects.Where(p => p.UserId == UserId).ToListAsync(); 
+        }
 
-        //    if (myUser.MyProjects == null)
-        //    {
-        //        _logger.LogError($"The user {myUser.LastName} does not have any created projects yet!");
-        //        return null;
-        //    }
-
-        //    await _context.Users.SingleOrDefaultAsync(user => user.UserId == myUser.UserId);
-        //    return myUser.MyProjects;
-        //}
-
-        
     }
 }

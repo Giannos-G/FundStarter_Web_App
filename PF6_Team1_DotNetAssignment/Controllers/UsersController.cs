@@ -137,5 +137,24 @@ namespace PF6_Team1_DotNetAssignment.Controllers
             return RedirectToAction("Details", new { id = userId });
             //return RedirectToAction(nameof(Details));
         }
+
+        public async Task<IActionResult> GetBackedProjects(int id)
+        {
+            var mylist = await _userService.GetAllMyBackedProjectsAsync(id);
+
+            //var returned_list = new List<Project>();
+
+            //foreach (var project in mylist)
+            //{
+            //    returned_list.Add(project.Project);
+            //}
+
+            return View(mylist);
+        }
+
+        public async Task<IActionResult> GetMyProjects(int id)
+        {
+            return View(await _userService.GetAllMyProjectsAsync(id));
+        }
     }
 }

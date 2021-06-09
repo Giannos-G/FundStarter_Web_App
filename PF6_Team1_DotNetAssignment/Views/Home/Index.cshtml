@@ -18,38 +18,38 @@
 
 </head>
 <body>
-    <header class="masthead text-center text-white" style="margin-top: -8%;">
+    <header class="masthead text-center text-white" style="margin-top: -18%;">
         <div class="masthead-content">
             <div class="container">
 
-                <h1 class="masthead-heading mb-0" >Trending Projects</h1>
+                <h2 class="masthead-heading mb-0" >Trending Projects</h2>
                 <div>  
-                    @foreach (var item in Model)
-                    {
-                        <div class="container" style="border-style:solid; height:70%">
-                            <h2 class="text-center"> @Html.DisplayFor(modelItem => item.Title)</h2>
-                            <div class="row">
-                                <div class="col-md-3 col-lg-6">
+                    <div class="container">
+
+                        <div class="row">
+                            @foreach (var item in Model)
+                            {
+                                <div class="col-md-3 col-lg-6" style="border-style:solid; height:70%">
+                                    <h2 class="text-center"> @Html.DisplayFor(modelItem => item.Title)</h2>
                                     <img src="~/img/01.jpg" width="100%" height="50%">
                                     <br />
                                     <br />
                                     <p>@Html.DisplayFor(modelItem => item.Description)</p>
-                                    <label class="text-muted" style="font-weight:600">Category: </label><span style="font-weight:600"> @Html.DisplayFor(modelItem => item.Category)</span>
+                                    <label class="text-dark" style="font-weight:800">Category: </label><span style="font-weight:600"> @Html.DisplayFor(modelItem => item.Category)</span>
                                     <br />
-                                    <label class="text-muted" style="font-weight:600">Country: </label><span style="font-weight:600"> @Html.DisplayFor(modelItem => item.Country)</span>
+                                    <label class="text-dark" style="font-weight:800">Country: </label><span style="font-weight:600"> @Html.DisplayFor(modelItem => item.Country)</span>
                                     <br />
-                                    <label class="text-muted" style="font-weight:600">Current Funds: </label><span style="font-weight:600"> @Html.DisplayFor(modelItem => item.CurrentFunds)</span>
+                                    <label class="text-dark" style="font-weight:800">Current Funds: </label><span style="font-weight:600"> @Html.DisplayFor(modelItem => item.CurrentFunds)</span>
                                     <br />
-                                    <label class="text-muted" style="font-weight:600">Required Funds: </label><span style="font-weight:600"> @Html.DisplayFor(modelItem => item.RequiredFunds)</span>
+                                    <label class="text-dark" style="font-weight:800">Required Funds: </label><span style="font-weight:600"> @Html.DisplayFor(modelItem => item.RequiredFunds)</span>
                                     <br />
-                                    <label class="text-muted" style="font-weight:600">Estimated Date: </label>
+                                    <label class="text-dark" style="font-weight:800">Estimated Date: </label>
                                     <br />
                                     <span style="font-weight:600;"> @Html.DisplayFor(modelItem => item.Deadline)</span>
-
                                 </div>
-                            </div>
+                            }
                         </div>
-                    }
+                    </div>
                 </div>
 
             </div>

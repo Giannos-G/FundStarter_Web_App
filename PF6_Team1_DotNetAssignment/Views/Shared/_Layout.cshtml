@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - DI.TinyCrm.Web</title>
+    <title>@ViewData["Title"] - Project Future 6 .Net Team 1</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900">
@@ -19,7 +19,7 @@
 <body>
     <header>
         <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark navbar-custom">
-            <a class="navbar-brand" href="#">PF6 Team1</a>
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">PF6 Team1</a>
             <div class="container">
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -33,7 +33,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Project" asp-action="Index_All">Project</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Project" asp-action="Index_All">Browse All Projects</a>
                         </li>
                     </ul>
 
@@ -46,20 +46,33 @@
                         </ul>
 
                     }
-
                     else
                     {
+
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item dropdown show">
-                                <button class="btn dropdown-toggle text-white" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span> @TempData["data"]</button>
-                                <div class="dropdown-menu show" role="menu">
-                                    <a class="dropdown-item" role="presentation" href="#">My Projects</a>
-                                    <a class="dropdown-item" role="presentation" href="#">My Funded Projects</a>
+                                <button onclick="myFunction()" class="btn dropdown-toggle text-white fa fa-sign-out" data-toggle="dropdown"></button>
+                                <div id="myDropdown" class="dropdown-menu">
+                                    <a class="dropdown-item" role="presentation" asp-controller="Users" asp-action="GetMyProjects" asp-route-id="@Context.Session.GetString("UserSession")">My Projects</a>
+                                    <a class="dropdown-item" role="presentation" asp-controller="Users" asp-action="GetBackedProjects" asp-route-id="@Context.Session.GetString("UserSession")">My Funded Projects</a>
                                     <a class="dropdown-item" role="presentation" asp-controller="Users" asp-action="Details" asp-route-id="@Context.Session.GetString("UserSession")">Settings</a>
-                                    <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Index">Log Out</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Logout" >Log Out</a>
                                 </div>
                             </li>
                         </ul>
+
+
+                        @*<ul class="nav navbar-nav ml-auto">
+                                <li class="nav-item dropdown show">
+                                    <button class="btn dropdown-toggle text-white" data-toggle="dropdown" aria-expanded="true" onclick=""> USER </button>
+                                    <div class="dropdown-menu show" role="menu" id="nav">
+                                        <a class="dropdown-item" role="presentation" href="#">My Projects</a>
+                                        <a class="dropdown-item" role="presentation" asp-controller="Users" asp-action="GetBackedProjects" asp-route-id="@Context.Session.GetString("UserSession")">My Funded Projects</a>
+                                        <a class="dropdown-item" role="presentation" asp-controller="Users" asp-action="Details" asp-route-id="@Context.Session.GetString("UserSession")">Settings</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Index">Log Out</a>
+                                    </div>
+                                </li>
+                            </ul>*@
                     }
 
 
@@ -77,6 +90,32 @@
             <p class="text-center text-white m-0 small">Copyright&nbsp;© PF6 Team1 .NET 2021</p>
         </div>
     </footer>
+
+    <script>
+
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function (event) {
+            if (!event.target.matches('.btn dropdown-toggle text-white fa fa-sign-out')) {
+                var dropdowns = document.getElementsByClassName("dropdown-menu");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+
+
+
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

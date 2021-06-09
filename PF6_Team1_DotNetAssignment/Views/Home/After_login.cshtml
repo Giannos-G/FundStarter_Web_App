@@ -19,41 +19,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark navbar-custom">
-        <a class="navbar-brand" href="#">PF6 Team1</a>
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="After_login">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" asp-area="" asp-controller="Project" asp-action="Index">My Project</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link text-white" asp-area="" asp-controller="Project" asp-action="Index">Project</a>
-                    </li>
-                </ul>
-
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item dropdown show">
-                        <button class="btn dropdown-toggle text-white" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span> @TempData["data"]</button>
-                        <div class="dropdown-menu show" role="menu">
-                            <a class="dropdown-item" role="presentation" href="#">My Projects</a>
-                            <a class="dropdown-item" role="presentation" href="#">My Funded Projects</a>
-                            <a class="dropdown-item" role="presentation" asp-controller="Users" asp-action="Details" asp-route-id="@TempData["id"]">Settings</a>
-                            <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Index">Log Out</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    
 
     <header class="masthead text-center text-white">
         <div class="masthead-content">

@@ -59,9 +59,10 @@ namespace PF6_Team1_DotNetAssignment.Controllers
 
                     //TempData["data"] = user.FirstOrDefault().Username;
                     var user1 = HttpContext.Session.GetString("UserSession");
-                  
-                    return RedirectToAction(idSes.ToString(), "After_login");
 
+                    //return RedirectToAction(idSes.ToString(), "After_login");
+
+                    return RedirectToAction("Index");
                     // return RedirectToAction("After_login/"+user[0].UserId);
                 }
                 else
@@ -73,13 +74,13 @@ namespace PF6_Team1_DotNetAssignment.Controllers
             return View();
         }
 
-        [HttpGet("After_login/{id}")]
-        public IActionResult After_login(int id)
+        public ActionResult Logout()
         {
-            TempData["id"] = id;
-            Console.WriteLine(id);
-            return View();
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index");
         }
+
+
 
         public IActionResult Privacy()
         {

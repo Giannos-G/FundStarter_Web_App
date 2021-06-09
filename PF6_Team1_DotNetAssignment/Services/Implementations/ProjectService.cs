@@ -225,12 +225,19 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
             project.CurrentFunds += package.Price;
             // Update User Backer List:
             var user = await _userService.GetUserByIdAsync(userId);
+          
             var projectuserbacker = new ProjectUserBacker
             {
                 ProjectKey = id,
                 UserKey = userId
             };
-            user.BackedProjects.Add(projectuserbacker);
+
+             if (await _context.ProjectUserBackers
+                .Where(p => p.ProjectKey == projectuserbacker.ProjectKey && p.UserKey == projectuserbacker.UserKey)
+                .SingleOrDefaultAsync() == null)
+            {
+                user.BackedProjects.Add(projectuserbacker);
+            }
 
             await _context.SaveChangesAsync();
             return true;
@@ -243,6 +250,10 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
             var return_project_list = new List<Project>();
             var project_list = await _context.Projects.Include(project => project.MyPackages).ToListAsync();
             //Get Max Current Funds
+            if (project_list == null)
+            {
+                return null;
+            }
             foreach (var project in project_list)
             {
                 if (project.CurrentFunds >= max)
@@ -251,12 +262,11 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
                     return_project_list.Add(project);
                 } 
             }
-
             return_project_list.Reverse();
-            //var variab = return_project_list.Count - 1;
-            
-            return_project_list.RemoveRange(2, return_project_list.Count-2);
-
+            if (return_project_list.Count > 2)
+            {
+                return_project_list.RemoveRange(2, return_project_list.Count - 2);
+            }
             return return_project_list;
         }
     }
