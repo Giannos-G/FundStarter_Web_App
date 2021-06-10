@@ -22,6 +22,7 @@ namespace PF6_Team1_DotNetAssignment
         {
             services.AddCoreServices();
             services.AddPersistance(Configuration);
+            services.AddApplicationInsights(Configuration);
 
             services.AddControllersWithViews();
 
