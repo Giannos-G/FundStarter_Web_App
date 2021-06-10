@@ -37,14 +37,25 @@
                             <br />
                             <label class="text-muted" style="font-weight: 800; font-size:larger ">Current Funds: </label><span style="font-weight: 600; font-size:large"> @Html.DisplayFor(modelItem => item.CurrentFunds)</span>
                             <br />
-                            <label class="text-muted" style="font-weight: 800; font-size:larger">Required Funds: </label><span style="font-weight: 600; font-size:large"> @Html.DisplayFor(modelItem =>item.RequiredFunds)</span>
+                            <label class="text-muted" style="font-weight: 800; font-size:larger">Required Funds: </label><span style="font-weight: 600; font-size:large"> @Html.DisplayFor(modelItem => item.RequiredFunds)</span>
                             <br />
-                            <label class="text-muted" style="font-weight: 800; font-size:larger">Estimated Deadline: </label>
 
+                            <label class="text-muted" style="font-weight: 800; font-size:larger">Estimated Deadline: </label>
+                            <br />
                             <span style="font-weight:600;"> @Html.DisplayFor(modelItem => item.Deadline)</span>
                             <br />
                             <br />
-          
+
+                            @*<script type="text/javascript">
+            var a = @item.RequiredFunds; var b = @item.CurrentFunds; var c = "Test"; var linebreak = "<br />";
+
+            result = (b / a) * 100;
+            document.createElement("progress").
+            document.write(result);
+            document.write("%");
+            document.write(linebreak);
+
+        </script>*@
 
                         </div>
                         <div class="col-md-6 col-lg-3 offset-lg-0 align-self-center" style=" height:500px; background-color:grey; overflow: scroll;">
@@ -87,4 +98,5 @@
 
 
 </html>
+
 
