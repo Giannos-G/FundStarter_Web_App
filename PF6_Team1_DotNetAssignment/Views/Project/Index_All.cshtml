@@ -45,17 +45,11 @@
                             <span style="font-weight:600;"> @Html.DisplayFor(modelItem => item.Deadline)</span>
                             <br />
                             <br />
-
-                            @*<script type="text/javascript">
-            var a = @item.RequiredFunds; var b = @item.CurrentFunds; var c = "Test"; var linebreak = "<br />";
-
-            result = (b / a) * 100;
-            document.createElement("progress").
-            document.write(result);
-            document.write("%");
-            document.write(linebreak);
-
-        </script>*@
+                            <br />
+                            <h5>Progress</h5>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped" role="progressbar" style="background-color:green; width: @(Convert.ToInt32((item.CurrentFunds/item.RequiredFunds)*100))%" aria-valuenow="@(Convert.ToInt32((item.CurrentFunds/item.RequiredFunds)*100))" aria-valuemin="0" aria-valuemax="100">@(Convert.ToInt32((item.CurrentFunds/item.RequiredFunds)*100))%</div>
+                            </div>
 
                         </div>
                         <div class="col-md-6 col-lg-3 offset-lg-0 align-self-center" style=" height:500px; background-color:grey; overflow: scroll;">
