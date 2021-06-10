@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using PF6_Team1_DotNetAssignment.Database;
-using PF6_Team1_DotNetAssignment.Services;
-using PF6_Team1_DotNetAssignment.Services.Implementations;
+using PF6_Team1_DotNetAssignment.Core.Database;
+using PF6_Team1_DotNetAssignment.Core.Services;
+using PF6_Team1_DotNetAssignment.Core.Services.Implementations;
 using System;
 
 namespace PF6_Team1_DotNetAssignment

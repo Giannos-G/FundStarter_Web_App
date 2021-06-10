@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PF6_Team1_DotNetAssignment.Core.Services.Implementations
 {
-    class PackageService : IPackageService
+    public class PackageService : IPackageService
     {
 
         private readonly Team1DbContext _context;

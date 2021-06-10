@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using PF6_Team1_DotNetAssignment.Database;
+using PF6_Team1_DotNetAssignment.Core.Database;
 using PF6_Team1_DotNetAssignment.Models;
 using System;
 using System.Diagnostics;
