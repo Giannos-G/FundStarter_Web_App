@@ -37,6 +37,12 @@ namespace PF6_Team1_DotNetAssignment.Services
                 //InitialFunds = options.InitialFunds,
                 RegistrationDate = DateTime.Now
             };
+            var UserWithSameEmail = await _context.Users.SingleOrDefaultAsync(user => user.Email == options.Email);
+            if (UserWithSameEmail != null)
+            {
+                _logger.LogError($" User with email: {options.Email} already exists");
+                return null;
+            }
 
             await _context.Users.AddAsync(newUser);
             await _context.SaveChangesAsync();

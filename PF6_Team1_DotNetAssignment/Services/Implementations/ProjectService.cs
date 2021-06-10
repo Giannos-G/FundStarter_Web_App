@@ -63,15 +63,12 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
                 Description = options.Description,
                 Category = options.Category,
                 Country = options.Country,
-                MyImage = options.MyImage,
-                //MyVideo = options.MyVideo,
+                FileName = options.FileName,
                 RequiredFunds = options.RequiredFunds,
-                //CurrentFunds = options.CurrentFunds,
                 CurrentFunds = 0, 
                 CreatedDate = DateTime.Now,                         // ????????  
                 Deadline = options.Deadline,
-                //AmountOfViews = options.AmountOfViews
-                //AmountOfViews = 0,
+
                UserId=options.UserId
             };
 
@@ -113,16 +110,6 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
             }
             //Find the project
             var ProjectToBeRead = await _context.Projects.SingleOrDefaultAsync(p => p.ProjectId == id);
-
-            //if (ProjectToBeRead == null)
-            //{
-            //    _logger.LogError($"Project with id {id} does not exist");
-            //    return null;
-            //}
-
-            //await _context.Projects.AddAsync(ProjectToBeRead);
-            //await _context.SaveChangesAsync();
-
             return ProjectToBeRead;
 
         }
@@ -145,13 +132,11 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
             ProjectToUpdate.Description = projectOption.Description;
             ProjectToUpdate.Category = projectOption.Category;
             ProjectToUpdate.Country = projectOption.Country;
-            ProjectToUpdate.MyImage = projectOption.MyImage;
-           // ProjectToUpdate.MyVideo = projectOption.MyVideo;
+            //ProjectToUpdate.MyImage = projectOption.MyImage;
             ProjectToUpdate.RequiredFunds = projectOption.RequiredFunds;
             ProjectToUpdate.CurrentFunds = projectOption.CurrentFunds;
             ProjectToUpdate.CreatedDate = projectOption.CreatedDate;
             ProjectToUpdate.Deadline = projectOption.Deadline;
-           // ProjectToUpdate.AmountOfViews = projectOption.AmountOfViews;        //?????????????????????
             
             // Save and Update Db
             await _context.SaveChangesAsync();
@@ -190,7 +175,6 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
                     Price = Package.Price,
                     Description = Package.Description,
                     Reward = Package.Reward,
-                    //AmountOfBackers = Package.AmountOfBackers,
                     ProjectId = Package.ProjectId
                 });
             }
@@ -223,12 +207,13 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
             var package = await _context.Packages.SingleOrDefaultAsync(pack => pack.PackageId == id);
             var project = await GetProjectByIdAsync(package.ProjectId);
             project.CurrentFunds += package.Price;
+            await _context.SaveChangesAsync();
             // Update User Backer List:
             var user = await _userService.GetUserByIdAsync(userId);
           
             var projectuserbacker = new ProjectUserBacker
             {
-                ProjectKey = id,
+                ProjectKey = project.ProjectId,
                 UserKey = userId
             };
 
@@ -237,9 +222,9 @@ namespace PF6_Team1_DotNetAssignment.Services.Implementations
                 .SingleOrDefaultAsync() == null)
             {
                 user.BackedProjects.Add(projectuserbacker);
+                await _context.SaveChangesAsync();
             }
 
-            await _context.SaveChangesAsync();
             return true;
         }
 

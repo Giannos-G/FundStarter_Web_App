@@ -4,6 +4,7 @@ using PF6_Team1_DotNetAssignment.Models;
 using PF6_Team1_DotNetAssignment.Options;
 using PF6_Team1_DotNetAssignment.Services;
 using System;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace PF6_Team1_DotNetAssignment.Controllers
@@ -61,9 +62,12 @@ namespace PF6_Team1_DotNetAssignment.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-        public async Task<IActionResult> Create([Bind("ProjectId, Title, Description," +
-            "Category, Country, MyImage, RequiredFunds, CurrentFunds, CreatedDate, Deadline")] Project project)
+        public async Task<IActionResult> Create([FromForm] Project project)
         {
+            var uniqueFileName = GetUniqueFileName(project.MyImage.FileName);
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\img", uniqueFileName);
+            project.MyImage.CopyTo(new FileStream(filePath, FileMode.Create));
+
             var userId1= HttpContext.Session.GetString("UserSession");
             if (ModelState.IsValid)
             {
@@ -73,18 +77,16 @@ namespace PF6_Team1_DotNetAssignment.Controllers
                     Description = project.Description,
                     Category = project.Category,
                     Country = project.Country,
-                    MyImage = project.MyImage,
-                    //MyVideo = project.MyVideo,
+                    FileName = uniqueFileName,
                     RequiredFunds = project.RequiredFunds,
                     CurrentFunds = project.CurrentFunds,
                     CreatedDate = project.CreatedDate,
                     Deadline = project.Deadline,
-                    //AmountOfViews = project.AmountOfViews,
                     UserId= int.Parse(userId1)
 
                 });
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("GetMyProjects", "Users", new {@id = userId1});
             }
             return View(project);
         }
@@ -112,7 +114,8 @@ namespace PF6_Team1_DotNetAssignment.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)        
         {
             await _projectService.DeleteProjectByIdAsync(id);
-            return RedirectToAction(nameof(Index));
+            var userId1 = HttpContext.Session.GetString("UserSession");
+            return RedirectToAction("GetMyProjects", "Users", new { @id = userId1 });
         }
 
         // Update a Project .............................
@@ -128,8 +131,7 @@ namespace PF6_Team1_DotNetAssignment.Controllers
             Description = project.Description,
             Category = project.Category,
             Country = project.Country,
-            MyImage = project.MyImage,
-            //MyVideo= project.MyVideo,
+            //MyImage = project.MyImage,
             RequiredFunds = project.RequiredFunds,
             Deadline = project.Deadline
             });           
@@ -142,10 +144,8 @@ namespace PF6_Team1_DotNetAssignment.Controllers
             "Category, Country, MyImage, RequiredFunds, Deadline")] ProjectOption project)                             
         {
             await _projectService.UpdateProjectById(projectId, project);
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Details", "Project", new { @id = projectId });
         }
-
-
 
         public async Task<IActionResult> AddFunds(int id)
         {
@@ -153,9 +153,14 @@ namespace PF6_Team1_DotNetAssignment.Controllers
             await _projectService.UpdateCurrentFunds(id, int.Parse(userId1));
 
             return RedirectToAction("Index", "Home");
-
-            //return RedirectToAction(nameof(Index));
         }
-
+        private static string GetUniqueFileName(string fileName)
+        {
+            fileName = Path.GetFileName(fileName);
+            return Path.GetFileNameWithoutExtension(fileName)
+            + "_"
+            + Guid.NewGuid().ToString().Substring(0, 4)
+            + Path.GetExtension(fileName);
+        }
     }
 }

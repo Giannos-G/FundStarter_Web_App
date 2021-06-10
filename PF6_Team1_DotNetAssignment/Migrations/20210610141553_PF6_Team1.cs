@@ -17,7 +17,7 @@ namespace PF6_Team1_DotNetAssignment.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Category = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    MyImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FileName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     RequiredFunds = table.Column<float>(type: "real", nullable: false),
                     CurrentFunds = table.Column<float>(type: "real", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),

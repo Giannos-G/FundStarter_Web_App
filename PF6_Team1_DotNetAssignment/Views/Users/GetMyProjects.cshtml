@@ -1,108 +1,86 @@
 ﻿@model IEnumerable<PF6_Team1_DotNetAssignment.Models.Project>
+@using Microsoft.AspNetCore.Http
+
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1 style="margin-top: 8%;">My Projects</h1>
+<!DOCTYPE html>
+<html>
 
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Country)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MyImage)
-            </th>
-            @*<th>
-                    @Html.DisplayNameFor(model => model.MyVideo)
-                </th>*@
-            <th>
-                @Html.DisplayNameFor(model => model.RequiredFunds)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CurrentFunds)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Deadline)
-            </th>
-            @*<th>
-                    @Html.DisplayNameFor(model => model.AmountOfViews)
-                </th>*@
 
-            <th></th>
-        </tr>
-    </thead>
-    <tbody id="projects">
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Category)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Country)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MyImage)
-                </td>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.MyVideo)
-                    </td>*@
-                <td>
-                    @Html.DisplayFor(modelItem => item.RequiredFunds)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CurrentFunds)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CreatedDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Deadline)
-                </td>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.AmountOfViews)
-                    </td>*@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
 
-                <td>
-                    @*<a asp-action="CreatePackages" asp-route-id="@item.ProjectId">Add Packages</a> |*@
-                    <a asp-controller="Project" asp-action="Details" asp-route-id="@item.ProjectId">Details</a> |
-                    <a asp-controller="Project" asp-action="Delete" asp-route-id="@item.ProjectId"> Delete </a>
-                    <!-- <a href="javascript:void(0)" onclick="deleteProject(@item.ProjectId)">Delete</a>-->
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<body>
+    <main style="margin-top: 8%;">
+        <h1>My Projects</h1>
+
+        <p>
+            <a asp-controller="Project" asp-action="Create" class="btn btn-dark">Create New</a>
+        </p>
+        <!-- Start: 1 Row 1 Column -->
+        <!-- End: 1 Row 1 Column -->
+        <!-- Start: 1 Row 2 Columns -->
+        <div>
+            @foreach (var item in Model)
+            {
+                <div class="container" style="border-style:solid; height:70%">
+                    <h2 class="text-center"> @Html.DisplayFor(modelItem => item.Title)</h2>
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                            <img src="~/img/@Html.DisplayFor(modelItem => item.FileName)" height="100%" style="margin-left:auto; display:block; width:100%; margin-right:auto;">
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                            <p style="font-size:medium">@Html.DisplayFor(modelItem => item.Description)</p>
+                            <label class="text-muted" style="font-weight:800; font-size:larger">Category: </label><span style="font-weight: 600; font-size:large"> @Html.DisplayFor(modelItem => item.Category)</span>
+                            <br />
+                            <label class="text-muted" style="font-weight: 800;font-size:larger">Country: </label><span style="font-weight: 600; font-size:large"> @Html.DisplayFor(modelItem => item.Country)</span>
+                            <br />
+                            <label class="text-muted" style="font-weight: 800; font-size:larger ">Current Funds: </label><span style="font-weight: 600; font-size:large"> @Html.DisplayFor(modelItem => item.CurrentFunds)</span>
+                            <br />
+                            <label class="text-muted" style="font-weight: 800; font-size:larger">Required Funds: </label><span style="font-weight: 600; font-size:large"> @Html.DisplayFor(modelItem => item.RequiredFunds)</span>
+                            <br />
+                            <label class="text-muted" style="font-weight: 800; font-size:larger">Estimated Deadline: </label>
+
+                            <span style="font-weight:600;"> @Html.DisplayFor(modelItem => item.Deadline)</span>
+                            <br />
+                            <br />
+                            <a asp-controller="Project" asp-action="Details" asp-route-id="@item.ProjectId" class="btn btn-dark">Details</a>
+                            <br />
+                            <br />
+                            <a asp-controller="Project" asp-action="Delete" asp-route-id="@item.ProjectId" class="btn btn-danger"> Delete </a>
+                        </div>
+
+                    </div>
+                </div>
+
+            }
+        </div>
+        </div>
+        <!-- End: 1 Row 2 Columns -->
+
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+</body>
+
+
+
+</html>
 
 @section Scripts
 {
     <script>
         const uri = 'Project';
+
+
 
         function getProject() {
             fetch(`${uri}/Get`)
@@ -171,3 +149,4 @@
         }
     </script>
 }
+

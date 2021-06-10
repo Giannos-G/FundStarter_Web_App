@@ -1,38 +1,4 @@
-﻿@*@model IEnumerable<PF6_Team1_DotNetAssignment.Models.Project>
-
-@{
-    ViewData["Title"] = "GetBackedProjects";
-}
-
-<h1>GetBackedProjects</h1>
-
-<div>
-    <h4>User</h4>
-    <hr />
-    <dl class="row">
-
-        <div class="container-sm" style="align-self:flex-start; border-style:solid;width:50%">
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Title)
-            </dt>
-
-            @foreach (var item in Model)
-            {
-                <td class="col-sm-2">
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-            }
-        </div>
-
-    </dl>
-</div>
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>*@
-
-
-
-@model IEnumerable<PF6_Team1_DotNetAssignment.Models.Project>
+﻿<!-- 
 
 <!DOCTYPE html>
 <html>
@@ -46,9 +12,6 @@
 
 <body>
     <main style="margin-top: 8%;">
-        <!-- Start: 1 Row 1 Column -->
-        <!-- End: 1 Row 1 Column -->
-        <!-- Start: 1 Row 2 Columns -->
         <div>
             @foreach (var item in Model)
             {
@@ -72,44 +35,97 @@
 
                         </div>
 
-                        @*<div class="col-md-6 col-lg-3 offset-lg-0 align-self-center" style=" height:500px; background-color:grey; overflow: scroll;">
-                        <h2 style="text-align:center">Packages</h2>
-                        @if (item.MyPackages != null)
-                        {
-
-                            @foreach (var item1 in item.MyPackages)
-                            {<div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title mb-1" style="text-align:center">@Html.DisplayFor(modelItem => item1.Title)</h4>
-                                        <br />
-                                        <h6 class="text-muted card-subtitle mb-2" style="text-align: center; text-decoration: underline ">@Html.DisplayFor(modelItem => item1.Reward)</h6>
-                                        <p class="card-text">@Html.DisplayFor(modelItem => item1.Description)</p>
-                                        <h6 class="text-muted card-subtitle mb-2"><span>Price: </span>@Html.DisplayFor(modelItem => item1.Price)</h6>
-                                        <a class="card-link" href="#">Link</a>
-                                        <a class="card-link" href="#">Link</a>
-                                    </div>
-                                </div>
-
-
-
-                            }
-
-                        }
-
-                    </div>*@
+                     
                     </div>
                 </div>
             }
             <div>
                 <a asp-controller="Home" asp-action="Index">Back to Home</a>
             </div>
-        </div>
+        </div>-->
         <!-- End: 1 Row 2 Columns -->
 
+
+    <!--</main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>-->
+
+
+/////////////////////////////////////////////////////
+
+@model IEnumerable<PF6_Team1_DotNetAssignment.Models.Project>
+@using Microsoft.AspNetCore.Http
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!DOCTYPE html>
+<html>
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <main style="margin-top: 8%;">
+        <h1>My Funded Projects</h1>
+
+               <!-- Start: 1 Row 1 Column -->
+        <!-- End: 1 Row 1 Column -->
+        <!-- Start: 1 Row 2 Columns -->
+        <div>
+            @foreach (var item in Model)
+            {
+                <div class="container" style="border-style:solid; height:70%">
+                    <h2 class="text-center"> @Html.DisplayFor(modelItem => item.Title)</h2>
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                            <img src="~/img/@Html.DisplayFor(modelItem => item.FileName)" height="100%" style="margin-left:auto; display:block; width:100%; margin-right:auto;">
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                            <p style="font-size:medium">@Html.DisplayFor(modelItem => item.Description)</p>
+                            <label class="text-muted" style="font-weight:800; font-size:larger">Category: </label><span style="font-weight: 600; font-size:large"> @Html.DisplayFor(modelItem => item.Category)</span>
+                            <br />
+                            <label class="text-muted" style="font-weight: 800;font-size:larger">Country: </label><span style="font-weight: 600; font-size:large"> @Html.DisplayFor(modelItem => item.Country)</span>
+                            <br />
+                            <label class="text-muted" style="font-weight: 800; font-size:larger ">Current Funds: </label><span style="font-weight: 600; font-size:large"> @Html.DisplayFor(modelItem => item.CurrentFunds)</span>
+                            <br />
+                            <label class="text-muted" style="font-weight: 800; font-size:larger">Required Funds: </label><span style="font-weight: 600; font-size:large"> @Html.DisplayFor(modelItem => item.RequiredFunds)</span>
+                            <br />
+                            <label class="text-muted" style="font-weight: 800; font-size:larger">Estimated Deadline: </label>
+
+                            <span style="font-weight:600;"> @Html.DisplayFor(modelItem => item.Deadline)</span>
+                            <br />
+                            <br />
+                            <a asp-controller="Home" asp-action="Index" class="btn btn-dark">Back to Home</a>
+                            <br />
+                          
+                        </div>
+
+                    </div>
+                </div>
+
+            }
+        </div>
+        </div>
+        <!-- End: 1 Row 2 Columns -->
 
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
 </body>
 
+
+
 </html>
+

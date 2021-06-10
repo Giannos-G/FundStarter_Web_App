@@ -10,7 +10,7 @@ using PF6_Team1_DotNetAssignment.Database;
 namespace PF6_Team1_DotNetAssignment.Migrations
 {
     [DbContext(typeof(Team1DbContext))]
-    [Migration("20210609132405_PF6_Team1")]
+    [Migration("20210610141553_PF6_Team1")]
     partial class PF6_Team1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -75,7 +75,7 @@ namespace PF6_Team1_DotNetAssignment.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("MyImage")
+                    b.Property<string>("FileName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<float>("RequiredFunds")

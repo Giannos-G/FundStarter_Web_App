@@ -12,7 +12,7 @@
 <div class="row">
     <div class="col-md-4">
         
-        <form asp-action="Create">
+        <form asp-action="Create" enctype="multipart/form-data" >
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Title" class="control-label">Project Title</label>
@@ -36,45 +36,19 @@
             </div>
             <div class="form-group">
                 <label asp-for="MyImage" class="control-label"> Upload an Image</label>
-                <input asp-for="MyImage" class="form-control" />
+                <input asp-for="MyImage" class="form-control" id="MyImage" />
                 <span asp-validation-for="MyImage" class="text-danger"></span>
             </div>
-            @*<div class="form-group">
-                <label asp-for="MyVideo" class="control-label">Upload a Video</label>
-                <input asp-for="MyVideo" class="form-control" />
-                <span asp-validation-for="MyVideo" class="text-danger"></span>
-            </div>*@
             <div class="form-group">
                 <label asp-for="RequiredFunds" class="control-label">Required Funds</label>
-                <input asp-for="RequiredFunds" class="form-control" />
+                <input asp-for="RequiredFunds" class="form-control" min="1"/>
                 <span asp-validation-for="RequiredFunds" class="text-danger"></span>
             </div>
-            <!--
-            <div class="form-group">
-                <label asp-for="CurrentFunds" class="control-label"></label>
-                <input asp-for="CurrentFunds" class="form-control" />
-                <span asp-validation-for="CurrentFunds" class="text-danger"></span>
-            </div>
-                -->
-            <!--
-            <div class="form-group">
-                <label asp-for="CreatedDate" class="control-label"></label>
-                <input asp-for="CreatedDate" class="form-control" />
-                <span asp-validation-for="CreatedDate" class="text-danger"></span>
-            </div>
-            -->
             <div class="form-group">
                 <label asp-for="Deadline" class="control-label"></label>
-                <input asp-for="Deadline" class="form-control" />
+                <input asp-for="Deadline" class="form-control" type="date"/>
                 <span asp-validation-for="Deadline" class="text-danger"></span>
             </div>
-            <!--
-            <div class="form-group">
-                <label asp-for="AmountOfViews" class="control-label"></label>
-                <input asp-for="AmountOfViews" class="form-control" />
-                <span asp-validation-for="AmountOfViews" class="text-danger"></span>
-            </div>
-                -->
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

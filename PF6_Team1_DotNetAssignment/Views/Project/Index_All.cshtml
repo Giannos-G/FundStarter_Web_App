@@ -1,8 +1,14 @@
 ﻿@model IEnumerable<PF6_Team1_DotNetAssignment.Models.Project>
 @using Microsoft.AspNetCore.Http
 
+@{
+    ViewData["Title"] = "Index";
+}
+
 <!DOCTYPE html>
 <html>
+
+
 
 <head>
     <meta charset="utf-8">
@@ -13,34 +19,34 @@
 
 <body>
     <main style="margin-top: 8%;">
-        <!-- Start: 1 Row 1 Column -->
-        <!-- End: 1 Row 1 Column -->
-        <!-- Start: 1 Row 2 Columns -->
+        <h1>All Projects</h1>
         <div>
             @foreach (var item in Model)
             {
                 <div class="container" style="border-style:solid; height:70%">
                     <h2 class="text-center"> @Html.DisplayFor(modelItem => item.Title)</h2>
                     <div class="row">
-                        <div class="col-md-6 col-lg-9">
-                            <img src="~/img/01.jpg" width="100%" height="50%">
+                        <div class="col-md-4 col-lg-4">
+                            <img src="~/img/@Html.DisplayFor(modelItem => item.FileName)" height="100%" style="margin-left:auto; display:block; width:100%; margin-right:auto;">
+                        </div>
+                        <div class="col-md-4 col-lg-4">
+                            <p style="font-size:medium">@Html.DisplayFor(modelItem => item.Description)</p>
+                            <label class="text-muted" style="font-weight:800; font-size:larger">Category: </label><span style="font-weight: 600; font-size:large"> @Html.DisplayFor(modelItem => item.Category)</span>
                             <br />
+                            <label class="text-muted" style="font-weight: 800;font-size:larger">Country: </label><span style="font-weight: 600; font-size:large"> @Html.DisplayFor(modelItem => item.Country)</span>
                             <br />
-                            <p>@Html.DisplayFor(modelItem => item.Description)</p>
-                            <label class="text-muted" style="font-weight:600">Category: </label><span style="font-weight:600"> @Html.DisplayFor(modelItem => item.Category)</span>
+                            <label class="text-muted" style="font-weight: 800; font-size:larger ">Current Funds: </label><span style="font-weight: 600; font-size:large"> @Html.DisplayFor(modelItem => item.CurrentFunds)</span>
                             <br />
-                            <label class="text-muted" style="font-weight:600">Country: </label><span style="font-weight:600"> @Html.DisplayFor(modelItem => item.Country)</span>
+                            <label class="text-muted" style="font-weight: 800; font-size:larger">Required Funds: </label><span style="font-weight: 600; font-size:large"> @Html.DisplayFor(modelItem =>item.RequiredFunds)</span>
                             <br />
-                            <label class="text-muted" style="font-weight:600">Current Funds: </label><span style="font-weight:600"> @Html.DisplayFor(modelItem => item.CurrentFunds)</span>
-                            <br />
-                            <label class="text-muted" style="font-weight:600">Required Funds: </label><span style="font-weight:600"> @Html.DisplayFor(modelItem => item.RequiredFunds)</span>
-                            <br />
-                            <label class="text-muted" style="font-weight:600">Estimated Funds: </label>
-                            <br />
+                            <label class="text-muted" style="font-weight: 800; font-size:larger">Estimated Deadline: </label>
+
                             <span style="font-weight:600;"> @Html.DisplayFor(modelItem => item.Deadline)</span>
+                            <br />
+                            <br />
+          
 
                         </div>
-
                         <div class="col-md-6 col-lg-3 offset-lg-0 align-self-center" style=" height:500px; background-color:grey; overflow: scroll;">
                             <h2 style="text-align:center">Packages</h2>
                             @if (item.MyPackages != null)
@@ -48,36 +54,37 @@
 
                                 @foreach (var item1 in item.MyPackages)
                                 {<div class="card">
-                                        <div class="card-body">
-                                            <h4 class="card-title mb-1" style="text-align:center">@Html.DisplayFor(modelItem => item1.Title)</h4>
-                                            <br />
-                                            <h6 class="text-muted card-subtitle mb-2" style="text-align: center; text-decoration: underline ">@Html.DisplayFor(modelItem => item1.Reward)</h6>
-                                            <p class="card-text">@Html.DisplayFor(modelItem => item1.Description)</p>
-                                            <h6 class="text-muted card-subtitle mb-2"><span>Price: </span>@Html.DisplayFor(modelItem => item1.Price)</h6>
-
-
-
-                                            @if (!string.IsNullOrEmpty(Context.Session.GetString("UserSession")))
-                                            {
-                                                <a asp-controller="Project" asp-action="AddFunds" asp-route-id="@item1.PackageId">Buy Now</a>
-                                            }
-                                        </div>
+                                     <div class="card-body">
+                                         <h4 class="card-title mb-1" style="text-align:center">@Html.DisplayFor(modelItem => item1.Title)</h4>
+                                         <br />
+                                         <h6 class="text-muted card-subtitle mb-2" style="text-align: center; text-decoration: underline ">@Html.DisplayFor(modelItem => item1.Reward)</h6>
+                                         <p class="card-text">@Html.DisplayFor(modelItem => item1.Description)</p>
+                                         <h6 class="text-muted card-subtitle mb-2"><span>Price: </span>@Html.DisplayFor(modelItem => item1.Price)</h6>
+                                         @if (!string.IsNullOrEmpty(Context.Session.GetString("UserSession")))
+                                         {
+                                             <a asp-controller="Project" asp-action="AddFunds" asp-route-id="@item1.PackageId" class="btn btn-success">Buy Now</a>
+                                         }
+                                     </div>
                                     </div>
                                 }
 
                             }
 
                         </div>
+
                     </div>
                 </div>
             }
         </div>
-        <!-- End: 1 Row 2 Columns -->
 
+        <!-- End: 1 Row 2 Columns -->
 
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
 </body>
 
+
+
 </html>
+

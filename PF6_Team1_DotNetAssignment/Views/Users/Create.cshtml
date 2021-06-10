@@ -13,50 +13,40 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="FirstName" class="control-label"></label>
-                <input asp-for="FirstName" class="form-control" />
+                <label asp-for="FirstName" class="control-label"> First Name </label>
+                <input asp-for="FirstName" class="form-control" placeholder="First Name" />
                 <span asp-validation-for="FirstName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="LastName" class="control-label"></label>
-                <input asp-for="LastName" class="form-control" />
+                <label asp-for="LastName" class="control-label"> Last Name </label>
+                <input asp-for="LastName" class="form-control" placeholder="Last Name" />
                 <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
+                <label asp-for="Email" class="control-label"> Email </label>
+                <input asp-for="Email" class="form-control" placeholder="Email" type="email" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
+                <input asp-for="Password" class="form-control" type="password" placeholder="Password" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Username" class="control-label"></label>
-                <input asp-for="Username" class="form-control" />
+                <label asp-for="Username" class="control-label"> Username </label>
+                <input asp-for="Username" class="form-control" placeholder="Username" />
                 <span asp-validation-for="Username" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Age" class="control-label"></label>
-                <input asp-for="Age" class="form-control" />
+                <label asp-for="Age" class="control-label"> Age </label>
+                <input asp-for="Age" class="form-control" placeholder="Age" min="18"/>
                 <span asp-validation-for="Age" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Gender" class="control-label"></label>
-                <input asp-for="Gender" class="form-control" />
+                <label asp-for="Gender" class="control-label">Gender</label>
+                <input asp-for="Gender" class="form-control" placeholder="Gender"/>
                 <span asp-validation-for="Gender" class="text-danger"></span>
             </div>
-            @*<div class="form-group">
-                <label asp-for="InitialFunds" class="control-label"></label>
-                <input asp-for="InitialFunds" class="form-control" />
-                <span asp-validation-for="InitialFunds" class="text-danger"></span>
-            </div>*@
-         <!--   <div class="form-group">
-                <label asp-for="RegistrationDate" class="control-label"></label>
-                <input asp-for="RegistrationDate" class="form-control" />
-                <span asp-validation-for="RegistrationDate" class="text-danger"></span>
-            </div> -->
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary"/>
             </div>

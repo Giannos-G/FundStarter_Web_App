@@ -73,7 +73,7 @@ namespace PF6_Team1_DotNetAssignment.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("MyImage")
+                    b.Property<string>("FileName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<float>("RequiredFunds")

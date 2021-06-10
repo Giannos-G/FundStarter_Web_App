@@ -1,6 +1,8 @@
-﻿using PF6_Team1_DotNetAssignment.Models;
+﻿using Microsoft.AspNetCore.Http;
+using PF6_Team1_DotNetAssignment.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PF6_Team1_DotNetAssignment.Options
 {
@@ -11,15 +13,14 @@ namespace PF6_Team1_DotNetAssignment.Options
         public string Description { get; set; }
         public string Category { get; set; }
         public string Country { get; set; }
-        public string MyImage { get; set; }
-        //public string MyVideo { get; set; }
-        public float RequiredFunds { get; set; }            //decimal
-        public float CurrentFunds { get; set; }             //decimal
+        public string FileName { set; get; }
+        [NotMapped]
+        public IFormFile MyImage { set; get; }
+        public float RequiredFunds { get; set; }            
+        public float CurrentFunds { get; set; }             
         public DateTime CreatedDate { get; set; }
         public DateTime Deadline { get; set; }
-       // public int AmountOfViews { get; set; }
-        public int UserId { get; set; }// To be invesigated...........
-
+        public int UserId { get; set; }
         public ProjectOption() { }
         public ProjectOption(Project project)
         {
@@ -30,8 +31,7 @@ namespace PF6_Team1_DotNetAssignment.Options
                 Description = project.Description;
                 Category = project.Category;
                 Country = project.Country;
-                MyImage = project.MyImage;
-                //MyVideo = project.MyVideo;
+                FileName = project.FileName;
                 RequiredFunds = project.RequiredFunds;
                 CurrentFunds = project.CurrentFunds;
                 CreatedDate = project.CreatedDate;
@@ -40,7 +40,7 @@ namespace PF6_Team1_DotNetAssignment.Options
             }
         }
 
-        public Project GetProject()                     //????????????????????????????
+        public Project GetProject()                  
         {
             return new Project
             {
@@ -49,8 +49,7 @@ namespace PF6_Team1_DotNetAssignment.Options
                 Description = Description,
                 Category = Category,
                 Country = Country,
-                MyImage = MyImage,
-                //MyVideo = MyVideo,
+                FileName = FileName,
                 RequiredFunds = RequiredFunds,
                 CurrentFunds = CurrentFunds,
                 CreatedDate = CreatedDate,
