@@ -36,6 +36,7 @@ namespace PF6_Team1_DotNetAssignment
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
+            services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_CONNECTIONSTRING"]);
 
 
         }
