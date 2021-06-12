@@ -16,7 +16,7 @@ namespace PF6_Team1_DotNetAssignment.Database
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)                   
         {
-            optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=NewPF6_Team1_New;User Id=sa;Password=admin!@#123");
+            optionsBuilder.UseSqlServer("Server=tcp:pf6-db-team1.database.windows.net,1433;Initial Catalog=PF6_Team1_DotNetAssignment_db;Persist Security Info=False;User ID=vgerokostas@athtech.gr@pf6-db-team1;Password=123456789Aa;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
